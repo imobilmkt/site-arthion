@@ -60,19 +60,15 @@ O número usado em todo o site é **(61) 99245-6202** (`5561992456202`). Cada bo
 
 Para alterar uma mensagem, edite o texto depois de `?text=` no `href` do link (ele precisa estar URL-encoded — acentos e espaços viram `%XX`). Ferramentas online de "URL encode" resolvem isso rapidamente caso troque o texto.
 
-## 5. Como instalar as fontes oficiais (Quiche Sans e Calluna)
+## 5. Fontes oficiais (Quiche Sans e Calluna)
 
-O site já está pronto para receber as fontes comerciais da marca. Enquanto os arquivos não chegam, ele usa **Marcellus** (títulos) e **Lora** (texto) via Google Fonts como fallback visualmente equivalente.
+As fontes comerciais da marca já estão instaladas em `fonts/quiche-sans/` (pesos Thin, Regular, Regular Itálico e Extra Bold) e `fonts/calluna/` (Regular e Itálico), convertidas para `.woff2` e ativas via `@font-face` no topo de `css/style.css`. Marcellus e Lora (Google Fonts) continuam carregadas como fallback automático, caso algum arquivo não esteja disponível.
 
-Quando você tiver os arquivos `.woff2`:
-
-1. Coloque-os em `fonts/quiche-sans/` e `fonts/calluna/` (veja os nomes esperados nos arquivos `COLOQUE_AQUI_OS_ARQUIVOS.txt` dentro de cada pasta).
-2. Abra `css/style.css` e descomente o bloco `@font-face` no topo do arquivo (seção 1).
-3. Pronto — a pilha de fontes (`font-family: 'Quiche Sans', 'Marcellus', serif;`) já prioriza a fonte oficial automaticamente assim que ela existir.
+Para trocar algum peso ou adicionar um novo (ex.: Calluna Bold), converta o arquivo para `.woff2`, salve-o na pasta correspondente e adicione um novo bloco `@font-face` seguindo o padrão já existente.
 
 ## 6. Mapa
 
-O mapa embutido na seção de contato usa o embed padrão do Google Maps (sem necessidade de chave de API), apontando para o endereço da Arthion na Asa Norte. Se o endereço mudar, basta gerar um novo link em [Google Maps → Compartilhar → Incorporar um mapa] e trocar o `src` do `<iframe>` em `index.html`.
+O mapa embutido na seção de contato usa o embed do Google Maps apontando diretamente para o pino "Arthion Arquitetura". Se precisar trocar, gere um novo link em [Google Maps → Compartilhar → Incorporar um mapa] e substitua o `src` do `<iframe>` em `index.html`.
 
 ## 7. Domínio
 

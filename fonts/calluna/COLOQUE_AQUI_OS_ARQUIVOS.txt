@@ -1,9 +1,0 @@
-Coloque aqui os arquivos da fonte comercial Calluna (texto corrido), por exemplo:
-
-- Calluna-Regular.woff2
-- Calluna-Italic.woff2
-- Calluna-Bold.woff2
-
-Depois, descomente/adicione o bloco @font-face correspondente em css/style.css (seção 1, no topo do arquivo).
-
-Até a instalação, o site usa Lora (Google Fonts) como fallback ativo.

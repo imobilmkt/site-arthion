@@ -3,16 +3,12 @@
    ============================================================ */
 
 /* ------------------------------------------------------------
-   1. FONTES DA MARCA (comerciais — ainda não instaladas)
-   Quando os arquivos .woff2 estiverem disponíveis:
-     1. Coloque-os em /fonts/quiche-sans/ e /fonts/calluna/
-     2. Descomente os blocos @font-face abaixo
-     3. Nomeie os arquivos exatamente como referenciado
-   Até lá, os fallbacks ativos (Marcellus e Lora, via Google
-   Fonts) assumem a função dessas fontes.
+   1. FONTES DA MARCA (Quiche Sans e Calluna)
+   Arquivos instalados em /fonts/quiche-sans/ e /fonts/calluna/.
+   Marcellus e Lora (Google Fonts) permanecem como fallback caso
+   algum arquivo não carregue.
    ------------------------------------------------------------ */
 
-/*
 @font-face {
   font-family: 'Quiche Sans';
   src: url('../fonts/quiche-sans/QuicheSans-Thin.woff2') format('woff2');
@@ -48,7 +44,13 @@
   font-style: normal;
   font-display: swap;
 }
-*/
+@font-face {
+  font-family: 'Calluna';
+  src: url('../fonts/calluna/Calluna-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 /* ------------------------------------------------------------
    2. TOKENS — paleta e variáveis globais
