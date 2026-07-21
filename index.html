@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthion Reformas | Arquitetura e Reformas de Alto Padrão em Brasília</title>
+<meta name="description" content="Escritório de arquitetura em Brasília – DF, especialista em reformas de alto padrão. Projetos arquitetônicos, acompanhamento de obras e design de interiores.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arthion Reformas | Arquitetura e Reformas de Alto Padrão em Brasília">
+<meta property="og:description" content="Especialistas em reformas de alto padrão. Criando novas formas ao que já existe.">
+<meta property="og:image" content="assets/img/og-image.jpg"> <!-- SUBSTITUIR: imagem 1200x630 -->
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://arthionreformas.com.br/"> <!-- SUBSTITUIR: domínio real -->
+
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml"> <!-- SUBSTITUIR: favicon oficial -->
+
+<!-- Fontes de fallback (Google Fonts) — ver README para instalar Quiche Sans e Calluna -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Schema.org — LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Arthion Reformas",
+  "description": "Escritório de arquitetura especializado em reformas de alto padrão em Brasília – DF.",
+  "image": "https://arthionreformas.com.br/assets/img/og-image.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "SRTVN Quadra 701, Bloco P, Sala 2056, Segundo andar",
+    "addressLocality": "Brasília",
+    "addressRegion": "DF",
+    "postalCode": "70719-900",
+    "addressCountry": "BR"
+  },
+  "telephone": "+5561992456202",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:30",
+    "closes": "18:00"
+  },
+  "areaServed": "Brasília – DF",
+  "url": "https://arthionreformas.com.br/"
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#inicio" class="header__logo" aria-label="Arthion Reformas — página inicial">
+      <img src="assets/logo/logo-arthion.svg" alt="Arthion Reformas" width="140" height="52">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <ul class="nav__list">
+        <li><a href="#inicio" class="nav__link">Início</a></li>
+        <li><a href="#sobre" class="nav__link">Sobre</a></li>
+        <li><a href="#servicos" class="nav__link">Serviços</a></li>
+        <li><a href="#projetos" class="nav__link">Projetos</a></li>
+        <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a
+      class="btn btn--primary header__cta"
+      href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+      target="_blank"
+      rel="noopener"
+      aria-label="Falar com a Arthion Reformas pelo WhatsApp"
+    >Fale conosco</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero__media img-placeholder" aria-hidden="true">
+      <img src="assets/img/hero.jpg" alt="" loading="eager" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+      <span class="img-placeholder__label">Imagem — Fachada de projeto residencial</span>
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="container hero__content reveal">
+      <p class="eyebrow">A R T H I O N &nbsp;R E F O R M A S</p>
+      <h1 class="hero__title">ARTHION REFORMAS</h1>
+      <p class="hero__subtitle">Especialistas em reformas de alto padrão</p>
+      <p class="hero__tagline">"Criando novas formas ao que já existe"</p>
+      <a
+        class="btn btn--outline"
+        href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+        target="_blank"
+        rel="noopener"
+      >Solicitar orçamento</a>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section" id="sobre">
+    <div class="container about">
+      <div class="about__media img-placeholder reveal" style="aspect-ratio: 4 / 5;">
+        <img src="assets/img/sobre.jpg" alt="Detalhe de acabamento em reforma de alto padrão assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+        <span class="img-placeholder__label">Imagem — Detalhe de acabamento</span>
+      </div>
+
+      <div class="about__text reveal">
+        <p class="eyebrow">Sobre a Arthion</p>
+        <h2 class="section__title">Excelência em cada detalhe</h2>
+
+        <!-- Texto editável -->
+        <p>Há anos dedicados à arquitetura de alto padrão em Brasília, transformamos espaços com um olhar apurado para proporção, materialidade e luz. Cada projeto nasce de uma escuta atenta às necessidades do cliente e se desenvolve com rigor técnico, unindo estética contemporânea e funcionalidade duradoura.</p>
+        <p>Acompanhamos cada etapa da obra com o mesmo cuidado que dedicamos ao projeto, garantindo que o resultado final seja fiel à visão original — sofisticado, atemporal e feito sob medida para quem valoriza qualidade acima de tudo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="section section--divider" id="servicos">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">O que fazemos</p>
+        <h2 class="section__title">Serviços</h2>
+      </div>
+
+      <div class="services">
+        <article class="service-card reveal">
+          <svg class="service-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M6 42V18L24 6l18 12v24H6Z"/>
+            <path d="M18 42V26h12v16"/>
+          </svg>
+          <h3>Projeto Arquitetônico</h3>
+          <p>Concepção completa de espaços residenciais e comerciais, do estudo de viabilidade ao detalhamento executivo, com precisão técnica e sensibilidade estética.</p>
+          <a
+            class="service-card__link"
+            href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20projetos%20arquitet%C3%B4nicos."
+            target="_blank"
+            rel="noopener"
+          >Saiba mais →</a>
+        </article>
+
+        <article class="service-card reveal">
+          <svg class="service-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M6 40h36"/>
+            <path d="M10 40V20l8-6 8 6v20"/>
+            <path d="M30 40V26l8-4 4 2v16"/>
+          </svg>
+          <h3>Acompanhamento de Obras</h3>
+          <p>Gestão criteriosa de cada etapa da execução, assegurando fidelidade ao projeto, controle de qualidade e prazos, do primeiro traço à entrega das chaves.</p>
+          <a
+            class="service-card__link"
+            href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20acompanhamento%20de%20obras."
+            target="_blank"
+            rel="noopener"
+          >Saiba mais →</a>
+        </article>
+
+        <article class="service-card reveal">
+          <svg class="service-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <rect x="8" y="10" width="32" height="22" rx="1"/>
+            <path d="M16 40h16"/>
+            <path d="M24 32v8"/>
+            <path d="M14 18h8v8h-8z"/>
+          </svg>
+          <h3>Design de Interiores</h3>
+          <p>Curadoria de ambientes que unem conforto e sofisticação, com seleção de materiais, mobiliário e iluminação que traduzem identidade e alto padrão.</p>
+          <a
+            class="service-card__link"
+            href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20design%20de%20interiores."
+            target="_blank"
+            rel="noopener"
+          >Saiba mais →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS / PORTFÓLIO -->
+  <section class="section section--divider" id="projetos">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Portfólio</p>
+        <h2 class="section__title">Projetos</h2>
+      </div>
+
+      <div class="portfolio">
+        <!-- Legendas fictícias — editar livremente -->
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-01.jpg" alt="Residência Lago Sul — reforma completa assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Residência Lago Sul</span>
+          </div>
+          <figcaption>Residência Lago Sul</figcaption>
+        </figure>
+
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-02.jpg" alt="Apartamento Noroeste — design de interiores assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Apartamento Noroeste</span>
+          </div>
+          <figcaption>Apartamento Noroeste</figcaption>
+        </figure>
+
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-03.jpg" alt="Cobertura Sudoeste — projeto arquitetônico assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Cobertura Sudoeste</span>
+          </div>
+          <figcaption>Cobertura Sudoeste</figcaption>
+        </figure>
+
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-04.jpg" alt="Studio Asa Sul — reforma de alto padrão assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Studio Asa Sul</span>
+          </div>
+          <figcaption>Studio Asa Sul</figcaption>
+        </figure>
+
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-05.jpg" alt="Residência Park Way — acompanhamento de obra assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Residência Park Way</span>
+          </div>
+          <figcaption>Residência Park Way</figcaption>
+        </figure>
+
+        <figure class="portfolio-item reveal">
+          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/projeto-06.jpg" alt="Escritório Corporativo — projeto de interiores assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
+            <span class="img-placeholder__label">Imagem — Projeto comercial</span>
+            <span class="portfolio-item__overlay" aria-hidden="true">Escritório Corporativo</span>
+          </div>
+          <figcaption>Escritório Corporativo</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section section--dark" id="depoimentos">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow eyebrow--light">O que dizem</p>
+        <h2 class="section__title section__title--light">Depoimentos</h2>
+      </div>
+
+      <div class="testimonials">
+        <!-- Depoimentos placeholder — editar livremente -->
+        <blockquote class="testimonial reveal">
+          <p class="testimonial__stars" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="testimonial__quote">"A Arthion transformou nossa cobertura com um cuidado impressionante em cada detalhe. O resultado superou tudo o que imaginávamos."</p>
+          <footer class="testimonial__author">Cliente Arthion</footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <p class="testimonial__stars" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="testimonial__quote">"Profissionalismo do início ao fim. O acompanhamento de obra foi impecável, sem surpresas e com muita transparência."</p>
+          <footer class="testimonial__author">Cliente Arthion</footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <p class="testimonial__stars" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="testimonial__quote">"Um projeto que traduziu exatamente o que buscávamos: sofisticação, conforto e um design atemporal."</p>
+          <footer class="testimonial__author">Cliente Arthion</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO E CONTATO -->
+  <section class="section section--divider" id="contato">
+    <div class="container contact">
+      <div class="contact__info reveal">
+        <p class="eyebrow">Fale com a gente</p>
+        <h2 class="section__title">Localização e Contato</h2>
+
+        <ul class="contact__list">
+          <li>
+            <strong>Endereço</strong>
+            <span>SRTVN Quadra 701, Bloco P, Sala 2056, Segundo andar — Asa Norte, Brasília – DF, CEP 70719-900</span>
+          </li>
+          <li>
+            <strong>Telefone / WhatsApp</strong>
+            <span>(61) 99245-6202</span>
+          </li>
+          <li>
+            <strong>Horário de funcionamento</strong>
+            <span>Segunda a sexta, a partir das 08:30</span> <!-- editável -->
+          </li>
+          <li>
+            <strong>Área atendida</strong>
+            <span>Brasília – DF</span>
+          </li>
+        </ul>
+
+        <a
+          class="btn btn--primary"
+          href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20Arthion%20Reformas."
+          target="_blank"
+          rel="noopener"
+        >Solicitar orçamento pelo WhatsApp</a>
+      </div>
+
+      <div class="contact__map reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.3780739050676!2d-47.89091022487014!3d-15.78400638485485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b6623cad993%3A0xe0c4657cb2bde5a3!2sArthion%20Arquitetura!5e0!3m2!1spt-BR!2sbr!4v1784671436152!5m2!1spt-BR!2sbr"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Mapa de localização da Arthion Reformas"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#inicio" class="footer__logo" aria-label="Arthion Reformas — página inicial">
+      <img src="assets/logo/logo-arthion-claro.svg" alt="Arthion Reformas" width="140" height="52">
+    </a>
+
+    <nav aria-label="Navegação do rodapé">
+      <ul class="footer__nav">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer__contact">
+      <p>SRTVN Quadra 701, Bloco P, Sala 2056 — Asa Norte, Brasília – DF</p>
+      <p>(61) 99245-6202</p>
+      <a href="#" class="footer__social" aria-label="Instagram da Arthion Reformas"> <!-- SUBSTITUIR: link do Instagram -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__rule" aria-hidden="true"></div>
+
+  <p class="footer__copy">© 2026 Arthion Reformas. Todos os direitos reservados.</p>
+</footer>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a
+  class="whatsapp-float"
+  href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+  target="_blank"
+  rel="noopener"
+  aria-label="Falar com a Arthion Reformas pelo WhatsApp"
+>
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
+    <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.771-1.833A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3Zm0 21.75c-1.94 0-3.75-.53-5.303-1.454l-.38-.226-4.61 1.088 1.117-4.49-.248-.394A9.71 9.71 0 0 1 5.25 15c0-5.936 4.815-10.75 10.751-10.75S26.75 9.064 26.75 15 21.937 24.75 16.001 24.75Zm5.906-8.005c-.322-.161-1.903-.939-2.198-1.046-.295-.107-.51-.161-.724.161-.215.322-.833 1.046-1.021 1.261-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.591-1.598-.958-.854-1.605-1.909-1.793-2.231-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.215-.322.322-.537.107-.215.054-.403-.027-.564-.081-.161-.724-1.746-.992-2.392-.261-.628-.526-.543-.724-.553-.188-.009-.403-.011-.618-.011-.215 0-.564.081-.859.403-.295.322-1.127 1.101-1.127 2.686 0 1.585 1.154 3.116 1.315 3.331.161.215 2.272 3.469 5.505 4.865.769.332 1.369.53 1.837.678.772.245 1.475.211 2.031.128.62-.093 1.903-.778 2.171-1.529.268-.752.268-1.396.188-1.529-.08-.134-.295-.215-.617-.376Z"/>
+  </svg>
+</a>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

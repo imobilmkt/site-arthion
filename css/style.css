@@ -1,0 +1,728 @@
+/* ============================================================
+   ARTHION REFORMAS — Folha de estilos
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. FONTES DA MARCA (comerciais — ainda não instaladas)
+   Quando os arquivos .woff2 estiverem disponíveis:
+     1. Coloque-os em /fonts/quiche-sans/ e /fonts/calluna/
+     2. Descomente os blocos @font-face abaixo
+     3. Nomeie os arquivos exatamente como referenciado
+   Até lá, os fallbacks ativos (Marcellus e Lora, via Google
+   Fonts) assumem a função dessas fontes.
+   ------------------------------------------------------------ */
+
+/*
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('../fonts/quiche-sans/QuicheSans-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('../fonts/quiche-sans/QuicheSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('../fonts/quiche-sans/QuicheSans-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('../fonts/quiche-sans/QuicheSans-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Calluna';
+  src: url('../fonts/calluna/Calluna-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* ------------------------------------------------------------
+   2. TOKENS — paleta e variáveis globais
+   ------------------------------------------------------------ */
+:root {
+  --cor-01: #EBDBCF; /* Areia clara — fundos principais */
+  --cor-02: #BD9775; /* Caramelo suave — detalhes, hover, ícones */
+  --cor-03: #965E2C; /* Bronze — destaque principal, CTAs secundários */
+  --cor-04: #6B3320; /* Marrom terroso — títulos sobre fundo claro */
+  --cor-05: #450814; /* Vinho profundo — seções escuras, footer */
+  --cor-06: #1F1414; /* Quase preto — texto principal, fundos escuros */
+
+  --whatsapp-green: #25D366;
+
+  --font-heading: 'Quiche Sans', 'Marcellus', serif;
+  --font-body: 'Calluna', 'Lora', Georgia, serif;
+
+  --container-w: 1240px;
+  --header-h: 84px;
+
+  --radius: 4px;
+  --ease: 0.3s ease;
+}
+
+/* ------------------------------------------------------------
+   3. RESET E BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cor-01);
+  color: var(--cor-06);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--cor-04);
+  margin: 0 0 1rem;
+}
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+button { font: inherit; cursor: pointer; }
+
+.container {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section[id] { scroll-margin-top: var(--header-h); }
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cor-03);
+  margin: 0 0 0.75rem;
+}
+
+.eyebrow--light { color: var(--cor-02); }
+
+.section__title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.section__title--light { color: var(--cor-01); }
+
+.section { padding: 96px 0; }
+
+.section--divider { border-top: 1px solid var(--cor-02); }
+
+.section--dark {
+  background: var(--cor-06);
+  color: var(--cor-01);
+}
+
+.section__head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--cor-06);
+  color: var(--cor-01);
+  padding: 12px 20px;
+  z-index: 999;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+/* Foco visível */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cor-03);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------
+   4. BOTÕES
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.btn--primary {
+  background: var(--cor-03);
+  color: var(--cor-01);
+}
+.btn--primary:hover { background: var(--cor-04); }
+
+.btn--outline {
+  background: transparent;
+  border-color: var(--cor-01);
+  color: var(--cor-01);
+}
+.btn--outline:hover {
+  background: var(--cor-01);
+  color: var(--cor-06);
+}
+
+/* ------------------------------------------------------------
+   5. IMAGE PLACEHOLDER
+   ------------------------------------------------------------ */
+.img-placeholder {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--cor-02) 35%, var(--cor-01));
+}
+
+.img-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-placeholder__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-04);
+}
+
+/* ------------------------------------------------------------
+   6. HEADER
+   ------------------------------------------------------------ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: rgba(235, 219, 207, 0.85);
+  border-bottom: 1px solid transparent;
+  transition: background var(--ease), border-color var(--ease), backdrop-filter var(--ease);
+}
+
+.header.is-scrolled {
+  background: rgba(235, 219, 207, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--cor-02);
+}
+
+.header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header__logo img { height: 44px; width: auto; }
+
+.nav__list {
+  display: flex;
+  gap: 32px;
+}
+
+.nav__link {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.nav__link:hover {
+  color: var(--cor-03);
+  border-bottom-color: var(--cor-03);
+}
+
+.header__cta { flex-shrink: 0; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 1px;
+  background: var(--cor-06);
+  transition: transform var(--ease), opacity var(--ease);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ------------------------------------------------------------
+   7. HERO
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background: var(--cor-06);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31,20,20,0.75) 0%, rgba(31,20,20,0.35) 55%, rgba(31,20,20,0.75) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  color: var(--cor-01);
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+  padding-top: var(--header-h);
+}
+
+.hero__content .eyebrow {
+  color: var(--cor-02);
+  font-size: 0.85rem;
+}
+
+.hero__title {
+  color: var(--cor-01);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.hero__subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.hero__tagline {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--cor-02);
+  margin-bottom: 2.5rem;
+}
+
+/* ------------------------------------------------------------
+   8. SOBRE
+   ------------------------------------------------------------ */
+.about {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------
+   9. SERVIÇOS
+   ------------------------------------------------------------ */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 8px;
+}
+
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--cor-03);
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.service-card__link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-03);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--ease);
+}
+
+.service-card__link:hover { border-bottom-color: var(--cor-03); }
+
+/* ------------------------------------------------------------
+   10. PORTFÓLIO
+   ------------------------------------------------------------ */
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.portfolio-item { margin: 0; }
+
+.portfolio-item .img-placeholder {
+  cursor: default;
+}
+
+.portfolio-item .img-placeholder img {
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .img-placeholder img { transform: scale(1.05); }
+
+.portfolio-item__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  background: linear-gradient(180deg, transparent 50%, rgba(69,8,20,0.85) 100%);
+  color: var(--cor-01);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity var(--ease);
+}
+
+.portfolio-item:hover .portfolio-item__overlay { opacity: 1; }
+
+.portfolio-item figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-04);
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   11. DEPOIMENTOS
+   ------------------------------------------------------------ */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.testimonial {
+  margin: 0;
+  padding: 0 8px;
+  border-left: 1px solid var(--cor-02);
+  padding-left: 24px;
+}
+
+.testimonial__stars {
+  color: var(--cor-02);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.testimonial__quote {
+  font-style: italic;
+  color: var(--cor-01);
+}
+
+.testimonial__author {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-02);
+}
+
+/* ------------------------------------------------------------
+   12. CONTATO / MAPA
+   ------------------------------------------------------------ */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.contact__list {
+  margin: 2rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact__list strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-03);
+  margin-bottom: 0.25rem;
+}
+
+.contact__map {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--cor-02);
+}
+
+/* ------------------------------------------------------------
+   13. FOOTER
+   ------------------------------------------------------------ */
+.footer {
+  background: var(--cor-05);
+  color: var(--cor-01);
+  padding: 64px 0 0;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 48px;
+}
+
+.footer__logo img { height: 40px; width: auto; }
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer__nav a {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-01);
+  transition: color var(--ease);
+}
+
+.footer__nav a:hover { color: var(--cor-02); }
+
+.footer__contact {
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.footer__contact p { margin: 0 0 0.4rem; }
+
+.footer__social {
+  display: inline-flex;
+  margin-top: 0.5rem;
+  color: var(--cor-01);
+  transition: color var(--ease);
+}
+
+.footer__social:hover { color: var(--cor-02); }
+
+.footer__rule {
+  height: 1px;
+  background: var(--cor-03);
+}
+
+.footer__copy {
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--cor-02);
+  padding: 24px 0;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   14. BOTÃO FLUTUANTE WHATSAPP
+   ------------------------------------------------------------ */
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 200;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--whatsapp-green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: transform var(--ease);
+}
+
+.whatsapp-float:hover { transform: scale(1.06); }
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--whatsapp-green);
+  animation: pulse 2.4s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* ------------------------------------------------------------
+   15. REVEAL (fade-in ao rolar)
+   ------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .whatsapp-float::before { animation: none; }
+  .portfolio-item .img-placeholder img { transition: none; }
+}
+
+/* ------------------------------------------------------------
+   16. RESPONSIVO
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .services,
+  .testimonials { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .portfolio { grid-template-columns: repeat(2, 1fr); }
+  .about,
+  .contact { gap: 40px; }
+}
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .header__cta { display: none; }
+  .hamburger { display: flex; }
+
+  .nav.is-open {
+    display: block;
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: var(--cor-01);
+    border-top: 1px solid var(--cor-02);
+    border-bottom: 1px solid var(--cor-02);
+    padding: 24px;
+  }
+
+  .nav.is-open .nav__list {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .about,
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .services,
+  .testimonials { grid-template-columns: 1fr; gap: 40px; }
+
+  .testimonial { border-left: none; padding-left: 0; text-align: center; }
+
+  .portfolio { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  .footer__inner { flex-direction: column; }
+  .footer__contact { text-align: left; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16.5px; }
+  .section { padding: 72px 0; }
+  .portfolio { grid-template-columns: 1fr; }
+  .btn { padding: 13px 26px; font-size: 0.78rem; }
+  .whatsapp-float { width: 54px; height: 54px; right: 16px; bottom: 16px; }
+}
+
+@media (min-width: 1600px) {
+  .container { max-width: 1400px; }
+  body { font-size: 19px; }
+}
