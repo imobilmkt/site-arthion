@@ -1,0 +1,8 @@
+.DS_Store
+
+# Arquivos originais/brutos das fontes (formato de compra, não usados pelo
+# site — só os .woff2 convertidos em fonts/the-seasons, fonts/cocomat-pro e
+# fonts/beautifully-delicious-script são referenciados pelo CSS).
+fonts/The seasons/
+fonts/cocomat/
+fonts/FontsFree-Net-BeautifullyDelicious.ttf

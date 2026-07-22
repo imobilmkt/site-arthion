@@ -31,6 +31,24 @@
 
   hamburger.addEventListener('click', toggleMenu);
 
+  /* Carrossel de depoimentos (setas ‹ ›) */
+  var track = document.getElementById('testimonialsTrack');
+  var prevBtn = document.getElementById('testimonialPrev');
+  var nextBtn = document.getElementById('testimonialNext');
+
+  if (track && prevBtn && nextBtn) {
+    function scrollByCard(direction) {
+      var card = track.querySelector('.testimonial');
+      if (!card) return;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var amount = (card.getBoundingClientRect().width + gap) * direction;
+      track.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+    nextBtn.addEventListener('click', function () { scrollByCard(1); });
+  }
+
   nav.querySelectorAll('.nav__link').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });

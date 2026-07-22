@@ -1,14 +1,95 @@
 /* ============================================================
    ARTHION REFORMAS — Folha de estilos
+   Sistema de design: creme / café / cobre
    ============================================================ */
 
 /* ------------------------------------------------------------
-   1. FONTES DA MARCA (Quiche Sans e Calluna)
-   Arquivos instalados em /fonts/quiche-sans/ e /fonts/calluna/.
-   Marcellus e Lora (Google Fonts) permanecem como fallback caso
-   algum arquivo não carregue.
+   1. FONTES DA MARCA (The Seasons, Cocomat Pro, Beautifully
+   Delicious Script) — arquivos recebidos e convertidos p/ woff2.
+
+   AVISOS PENDENTES (ver README, seção 5, para detalhes):
+   - Cocomat Pro: os arquivos são versões "trial" cuja licença
+     (EULA da Zetafonts) permite só uso pessoal/não comercial —
+     não cobre uso em site de empresa. Precisa comprar a licença
+     comercial antes de publicar.
+   - The Seasons e Beautifully Delicious Script: os arquivos não
+     têm nenhum glifo acentuado (á, ã, ç, é, ...). Qualquer
+     palavra acentuada quebra visualmente (o caractere cai pro
+     fallback). Publicado assim mesmo por decisão explícita do
+     cliente em 2026-07-22.
+   - Cocomat Pro só veio em Light/UltraLight (sem Regular/Bold);
+     onde o CSS pede peso 600/700, o navegador vai negritar
+     sinteticamente a partir do Light.
    ------------------------------------------------------------ */
 
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Seasons';
+  src: url('../fonts/the-seasons/TheSeasons-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cocomat Pro';
+  src: url('../fonts/cocomat-pro/CocomatPro-UltraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cocomat Pro';
+  src: url('../fonts/cocomat-pro/CocomatPro-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Beautifully Delicious Script';
+  src: url('../fonts/beautifully-delicious-script/BeautifullyDeliciousScript-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fontes de marca anteriores (Quiche Sans / Calluna) — mantidas
+   instaladas em /fonts caso o projeto reverta para elas, mas
+   fora da cadeia ativa de fontes por decisão do novo briefing. */
+/*
 @font-face {
   font-family: 'Quiche Sans';
   src: url('../fonts/quiche-sans/QuicheSans-Thin.woff2') format('woff2');
@@ -51,28 +132,43 @@
   font-style: italic;
   font-display: swap;
 }
+*/
 
 /* ------------------------------------------------------------
    2. TOKENS — paleta e variáveis globais
    ------------------------------------------------------------ */
 :root {
-  --cor-01: #EBDBCF; /* Areia clara — fundos principais */
-  --cor-02: #BD9775; /* Caramelo suave — detalhes, hover, ícones */
-  --cor-03: #965E2C; /* Bronze — destaque principal, CTAs secundários */
-  --cor-04: #6B3320; /* Marrom terroso — títulos sobre fundo claro */
-  --cor-05: #450814; /* Vinho profundo — seções escuras, footer */
-  --cor-06: #1F1414; /* Quase preto — texto principal, fundos escuros */
+  --cor-creme: #EFE5D6;
+  --cor-creme-claro: #F4ECDF;
+  --cor-cafe: #2A1D18;
+  --cor-cafe-card: #38271F;
+  --cor-cobre: #A96A3F;
+  --cor-cobre-hover: #935A33;
+  --texto-escuro: #2A1D18;
+  --texto-claro: #EFE5D6;
+  --texto-suave-escuro: #6B5D52;
+  --texto-suave-claro: #C6B9A8;
+  --borda-sutil: rgba(169, 106, 63, 0.35);
 
   --whatsapp-green: #25D366;
 
-  --font-heading: 'Quiche Sans', 'Marcellus', serif;
-  --font-body: 'Calluna', 'Lora', Georgia, serif;
+  /* Troca pedida pelo cliente em 2026-07-22: The Seasons passa a
+     ser a fonte de títulos e de tudo que precisa chamar atenção
+     (H1/H2, números de destaque). Beautifully Delicious Script
+     (a "letra mais desenhada") vira só um acento decorativo em
+     detalhes pontuais (palavra em destaque dentro do título,
+     aspas dos depoimentos) — não é mais usada em textos inteiros. */
+  --font-title: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-subtitle: 'Cocomat Pro', 'Montserrat', sans-serif;
+  --font-body: 'The Seasons', 'Cormorant Garamond', serif;
+  --font-detail: 'Beautifully Delicious Script', 'Alex Brush', cursive;
 
   --container-w: 1240px;
-  --header-h: 84px;
+  --header-h: 88px;
 
-  --radius: 4px;
-  --ease: 0.3s ease;
+  --radius-sm: 3px;
+  --radius-md: 14px;
+  --ease: 0.25s ease;
 }
 
 /* ------------------------------------------------------------
@@ -83,10 +179,10 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--cor-01);
-  color: var(--cor-06);
+  background: var(--cor-creme);
+  color: var(--texto-escuro);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -94,9 +190,10 @@ body {
 img { max-width: 100%; display: block; }
 
 h1, h2, h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-title);
   font-weight: 400;
-  color: var(--cor-04);
+  color: var(--texto-escuro);
+  line-height: 1.15;
   margin: 0 0 1rem;
 }
 
@@ -120,42 +217,61 @@ button { font: inherit; cursor: pointer; }
 section[id] { scroll-margin-top: var(--header-h); }
 
 .eyebrow {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
+  display: block;
+  font-family: var(--font-subtitle);
+  font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cor-03);
-  margin: 0 0 0.75rem;
+  color: var(--cor-cobre);
+  margin: 0 0 0.9rem;
 }
 
-.eyebrow--light { color: var(--cor-02); }
+.eyebrow--light { color: var(--cor-cobre); }
 
 .section__title {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: clamp(2rem, 3.6vw, 3rem);
 }
 
-.section__title--light { color: var(--cor-01); }
+.section__title--light { color: var(--texto-claro); }
 
-.section { padding: 96px 0; }
+.section__title em,
+.hero__title em {
+  font-family: var(--font-detail);
+  font-style: normal;
+  color: var(--cor-cobre);
+}
 
-.section--divider { border-top: 1px solid var(--cor-02); }
+.section { padding: 108px 0; }
+
+.section--divider { border-top: 1px solid var(--borda-sutil); }
 
 .section--dark {
-  background: var(--cor-06);
-  color: var(--cor-01);
+  background: var(--cor-cafe);
+  color: var(--texto-claro);
 }
 
-.section__head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.section--dark p { color: var(--texto-suave-claro); }
+
+.section__head { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+
+.section__head--split {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+  max-width: none;
+  margin: 0 0 56px;
+}
 
 /* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--cor-06);
-  color: var(--cor-01);
+  background: var(--cor-cafe);
+  color: var(--texto-claro);
   padding: 12px 20px;
   z-index: 999;
 }
@@ -167,39 +283,58 @@ section[id] { scroll-margin-top: var(--header-h); }
 /* Foco visível */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--cor-03);
+  outline: 2px solid var(--cor-cobre);
   outline-offset: 3px;
 }
 
 /* ------------------------------------------------------------
-   4. BOTÕES
+   4. BOTÕES E LINKS
    ------------------------------------------------------------ */
 .btn {
   display: inline-block;
-  padding: 14px 32px;
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
+  padding: 16px 32px;
+  font-family: var(--font-subtitle);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   transition: background var(--ease), color var(--ease), border-color var(--ease);
 }
 
 .btn--primary {
-  background: var(--cor-03);
-  color: var(--cor-01);
+  background: var(--cor-cobre);
+  color: var(--cor-creme);
 }
-.btn--primary:hover { background: var(--cor-04); }
+.btn--primary:hover { background: var(--cor-cobre-hover); }
 
 .btn--outline {
   background: transparent;
-  border-color: var(--cor-01);
-  color: var(--cor-01);
+  border-color: var(--texto-claro);
+  color: var(--texto-claro);
 }
 .btn--outline:hover {
-  background: var(--cor-01);
-  color: var(--cor-06);
+  background: var(--texto-claro);
+  color: var(--texto-escuro);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-subtitle);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-cobre);
+  white-space: nowrap;
+  transition: gap var(--ease), color var(--ease);
+}
+.link-arrow:hover {
+  gap: 12px;
+  color: var(--cor-cobre-hover);
 }
 
 /* ------------------------------------------------------------
@@ -208,7 +343,8 @@ button:focus-visible {
 .img-placeholder {
   position: relative;
   overflow: hidden;
-  background: color-mix(in srgb, var(--cor-02) 35%, var(--cor-01));
+  background: color-mix(in srgb, var(--cor-cobre) 30%, var(--cor-creme));
+  border-radius: var(--radius-md);
 }
 
 .img-placeholder img {
@@ -227,15 +363,23 @@ button:focus-visible {
   justify-content: center;
   text-align: center;
   padding: 1.5rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-family: var(--font-subtitle);
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cor-04);
+  color: var(--texto-escuro);
 }
 
 /* ------------------------------------------------------------
-   6. HEADER
+   6. ÍCONES
+   ------------------------------------------------------------ */
+.icon {
+  color: var(--cor-cobre);
+  stroke-width: 1.4;
+}
+
+/* ------------------------------------------------------------
+   7. HEADER
    ------------------------------------------------------------ */
 .header {
   position: fixed;
@@ -244,15 +388,15 @@ button:focus-visible {
   right: 0;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(235, 219, 207, 0.85);
+  background: rgba(239, 229, 214, 0.9);
   border-bottom: 1px solid transparent;
   transition: background var(--ease), border-color var(--ease), backdrop-filter var(--ease);
 }
 
 .header.is-scrolled {
-  background: rgba(235, 219, 207, 0.92);
+  background: rgba(239, 229, 214, 0.96);
   backdrop-filter: blur(10px);
-  border-bottom-color: var(--cor-02);
+  border-bottom-color: var(--borda-sutil);
 }
 
 .header__inner {
@@ -263,7 +407,7 @@ button:focus-visible {
   gap: 24px;
 }
 
-.header__logo img { height: 44px; width: auto; }
+.header__logo img { height: 46px; width: auto; }
 
 .nav__list {
   display: flex;
@@ -271,9 +415,10 @@ button:focus-visible {
 }
 
 .nav__link {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-subtitle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 4px 0;
   border-bottom: 1px solid transparent;
@@ -281,8 +426,8 @@ button:focus-visible {
 }
 
 .nav__link:hover {
-  color: var(--cor-03);
-  border-bottom-color: var(--cor-03);
+  color: var(--cor-cobre);
+  border-bottom-color: var(--cor-cobre);
 }
 
 .header__cta { flex-shrink: 0; }
@@ -302,7 +447,7 @@ button:focus-visible {
 .hamburger span {
   display: block;
   height: 1px;
-  background: var(--cor-06);
+  background: var(--texto-escuro);
   transition: transform var(--ease), opacity var(--ease);
 }
 
@@ -311,66 +456,84 @@ button:focus-visible {
 .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ------------------------------------------------------------
-   7. HERO
+   8. HERO (dividido em 2 colunas)
    ------------------------------------------------------------ */
 .hero {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hero__media {
-  position: absolute;
-  inset: 0;
-  background: var(--cor-06);
-}
-
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(31,20,20,0.75) 0%, rgba(31,20,20,0.35) 55%, rgba(31,20,20,0.75) 100%);
-}
-
-.hero__content {
-  position: relative;
-  z-index: 1;
-  color: var(--cor-01);
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto;
   padding-top: var(--header-h);
 }
 
-.hero__content .eyebrow {
-  color: var(--cor-02);
-  font-size: 0.85rem;
+.hero__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 5vw;
 }
 
 .hero__title {
-  color: var(--cor-01);
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(2.6rem, 5vw, 4rem);
   margin-bottom: 1.25rem;
 }
 
 .hero__subtitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  letter-spacing: 0.04em;
-  margin-bottom: 0.5rem;
+  max-width: 460px;
+  color: var(--texto-suave-escuro);
+  font-size: 1.15rem;
+  margin-bottom: 2.25rem;
 }
 
-.hero__tagline {
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--cor-02);
-  margin-bottom: 2.5rem;
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.hero__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ------------------------------------------------------------
-   8. SOBRE
+   9. BARRA DE DIFERENCIAIS
+   ------------------------------------------------------------ */
+.differentials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.differential {
+  text-align: left;
+}
+
+.differential .icon { width: 36px; height: 36px; margin-bottom: 1.5rem; }
+
+.differential h3 {
+  font-family: var(--font-subtitle);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-claro);
+  margin-bottom: 0.6rem;
+}
+
+.differential p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   10. SOBRE
    ------------------------------------------------------------ */
 .about {
   display: grid;
@@ -380,53 +543,116 @@ button:focus-visible {
 }
 
 /* ------------------------------------------------------------
-   9. SERVIÇOS
+   10-B. SERVIÇOS
    ------------------------------------------------------------ */
 .services {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  gap: 24px;
 }
 
-.service-card {
-  text-align: center;
-  padding: 8px;
+.service {
+  padding: 32px 28px;
+  background: var(--cor-cafe-card);
+  border-radius: var(--radius-md);
 }
 
-.service-card__icon {
-  width: 48px;
-  height: 48px;
-  color: var(--cor-03);
-  margin-bottom: 1.5rem;
+.service__number {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--cor-cobre);
+  margin: 0 0 0.9rem;
 }
 
-.service-card h3 {
-  font-size: 1.1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.service h3 {
+  font-family: var(--font-subtitle);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--texto-claro);
+  margin: 0;
 }
-
-.service-card__link {
-  display: inline-block;
-  margin-top: 0.75rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cor-03);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--ease);
-}
-
-.service-card__link:hover { border-bottom-color: var(--cor-03); }
 
 /* ------------------------------------------------------------
-   10. PORTFÓLIO
+   11. PROCESSO (linha do tempo)
+   ------------------------------------------------------------ */
+.process {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--borda-sutil);
+}
+
+.process-step {
+  position: relative;
+  text-align: center;
+  padding-top: 0;
+}
+
+.process-step__number {
+  /* Cocomat Pro (font-subtitle) tem os 10 algarismos com o mesmo
+     desenho duplicado (fonte trial) — usa The Seasons, que tem
+     os números corretos e distintos entre si. */
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--texto-suave-escuro);
+  margin-bottom: 0.9rem;
+}
+
+.process-step__circle {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cor-creme);
+  border: 1px solid var(--borda-sutil);
+}
+
+.process-step__circle .icon { width: 22px; height: 22px; }
+
+.process-step h3 {
+  font-family: var(--font-subtitle);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.process-step p {
+  font-size: 0.9rem;
+  color: var(--texto-suave-escuro);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   12. PORTFÓLIO
    ------------------------------------------------------------ */
 .portfolio {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
 }
 
 .portfolio-item { margin: 0; }
@@ -447,12 +673,11 @@ button:focus-visible {
   display: flex;
   align-items: flex-end;
   padding: 20px;
-  background: linear-gradient(180deg, transparent 50%, rgba(69,8,20,0.85) 100%);
-  color: var(--cor-01);
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  background: linear-gradient(180deg, transparent 50%, rgba(42, 29, 24, 0.9) 100%);
+  color: var(--texto-claro);
+  font-family: var(--font-subtitle);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   opacity: 0;
   transition: opacity var(--ease);
 }
@@ -460,53 +685,128 @@ button:focus-visible {
 .portfolio-item:hover .portfolio-item__overlay { opacity: 1; }
 
 .portfolio-item figcaption {
-  margin-top: 0.75rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  margin-top: 0.9rem;
+  font-family: var(--font-subtitle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--cor-04);
-  text-align: center;
+  color: var(--texto-suave-claro);
 }
 
 /* ------------------------------------------------------------
-   11. DEPOIMENTOS
+   13. ESTATÍSTICAS
    ------------------------------------------------------------ */
-.testimonials {
+.stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
 }
+
+.stat .icon { width: 32px; height: 32px; margin-bottom: 1rem; }
+
+.stat__number {
+  display: block;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--cor-cobre);
+  margin-bottom: 0.5rem;
+}
+
+/* The Seasons não tem os símbolos % e + de verdade — o arquivo
+   trial reaproveita o desenho do algarismo "4" nesses caracteres.
+   Isola só o símbolo no fallback do Google Fonts (mesma família
+   serifada, sem esse problema) sem trocar a fonte dos números. */
+.stat__number .num-symbol {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.stat p {
+  font-size: 0.9rem;
+  color: var(--texto-suave-escuro);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   14. DEPOIMENTOS
+   ------------------------------------------------------------ */
+.testimonials-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.testimonials-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--borda-sutil);
+  color: var(--cor-cobre);
+  background: transparent;
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.testimonials-nav__btn:hover {
+  background: var(--cor-cafe-card);
+  border-color: var(--cor-cobre);
+}
+
+.testimonials {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.testimonials::-webkit-scrollbar { display: none; }
 
 .testimonial {
+  flex: 0 0 calc((100% - 56px) / 3);
+  scroll-snap-align: start;
   margin: 0;
-  padding: 0 8px;
-  border-left: 1px solid var(--cor-02);
-  padding-left: 24px;
+  padding: 40px 32px;
+  background: var(--cor-cafe-card);
+  border-radius: var(--radius-md);
 }
 
-.testimonial__stars {
-  color: var(--cor-02);
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+.testimonial__mark {
+  font-family: var(--font-detail);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--cor-cobre);
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .testimonial__quote {
   font-style: italic;
-  color: var(--cor-01);
+  color: var(--texto-claro);
 }
 
 .testimonial__author {
-  margin-top: 1rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  margin-top: 1.5rem;
+  font-family: var(--font-subtitle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--cor-02);
+  color: var(--texto-suave-claro);
+}
+
+.testimonial__author span {
+  display: block;
+  margin-top: 0.3rem;
+  font-weight: 500;
+  color: var(--cor-cobre);
 }
 
 /* ------------------------------------------------------------
-   12. CONTATO / MAPA
+   15. CONTATO / MAPA
    ------------------------------------------------------------ */
 .contact {
   display: grid;
@@ -522,90 +822,151 @@ button:focus-visible {
   gap: 1.25rem;
 }
 
+/* The Seasons (font-body) reaproveita o desenho do "4" em "(", ")"
+   e "-" — quebra o telefone "(61) 99245-6202" e o CEP "70719-900".
+   Usa o fallback do Google Fonts direto, sem esse bug. */
+.contact__list span {
+  font-family: 'Cormorant Garamond', serif;
+}
+
 .contact__list strong {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-subtitle);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--cor-03);
-  margin-bottom: 0.25rem;
+  color: var(--cor-cobre);
+  margin-bottom: 0.3rem;
 }
 
 .contact__map {
   aspect-ratio: 4 / 3;
-  border: 1px solid var(--cor-02);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--borda-sutil);
 }
 
 /* ------------------------------------------------------------
-   13. FOOTER
+   16. FOOTER
    ------------------------------------------------------------ */
 .footer {
-  background: var(--cor-05);
-  color: var(--cor-01);
-  padding: 64px 0 0;
+  background: var(--cor-cafe);
+  color: var(--texto-claro);
+  padding: 88px 0 0;
 }
 
-.footer__inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 48px;
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
 }
 
-.footer__logo img { height: 40px; width: auto; }
+.footer__logo img { height: 42px; width: auto; margin-bottom: 1.25rem; }
 
-.footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.footer__desc {
+  /* As aspas retas do texto ("Criando novas...") também caem no
+     bug do The Seasons (mesmo desenho duplicado do "4"). */
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--texto-suave-claro);
+  max-width: 30ch;
 }
-
-.footer__nav a {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cor-01);
-  transition: color var(--ease);
-}
-
-.footer__nav a:hover { color: var(--cor-02); }
-
-.footer__contact {
-  text-align: right;
-  font-size: 0.95rem;
-}
-
-.footer__contact p { margin: 0 0 0.4rem; }
 
 .footer__social {
-  display: inline-flex;
-  margin-top: 0.5rem;
-  color: var(--cor-01);
+  display: flex;
+  gap: 14px;
+  margin-top: 1.5rem;
+}
+
+.footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--borda-sutil);
+  color: var(--cor-cobre);
+  transition: background var(--ease), color var(--ease);
+}
+
+.footer__social a:hover {
+  background: var(--cor-cobre);
+  color: var(--cor-creme);
+}
+
+.footer__heading {
+  font-family: var(--font-subtitle);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-cobre);
+  margin-bottom: 1.4rem;
+}
+
+.footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.footer__nav-list a {
+  font-size: 0.95rem;
+  color: var(--texto-claro);
   transition: color var(--ease);
 }
 
-.footer__social:hover { color: var(--cor-02); }
+.footer__nav-list a:hover { color: var(--cor-cobre); }
+
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.footer__contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--texto-suave-claro);
+}
+
+/* Mesmo bug do The Seasons (font-body) descrito em .contact__list —
+   aqui quebraria o telefone e o "@" do e-mail. */
+.footer__contact-list li span {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.footer__contact-list .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
 
 .footer__rule {
   height: 1px;
-  background: var(--cor-03);
+  background: var(--borda-sutil);
 }
 
 .footer__copy {
   text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: var(--cor-02);
-  padding: 24px 0;
+  /* Cocomat Pro (font-subtitle) tem os 10 algarismos com o mesmo
+     desenho duplicado — quebraria o "2026". Usa o fallback direto. */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: var(--texto-suave-claro);
+  padding: 28px 0;
   margin: 0;
 }
 
 /* ------------------------------------------------------------
-   14. BOTÃO FLUTUANTE WHATSAPP
+   17. BOTÃO FLUTUANTE WHATSAPP
    ------------------------------------------------------------ */
 .whatsapp-float {
   position: fixed;
@@ -642,7 +1003,7 @@ button:focus-visible {
 }
 
 /* ------------------------------------------------------------
-   15. REVEAL (fade-in ao rolar)
+   18. REVEAL (fade-in ao rolar)
    ------------------------------------------------------------ */
 .reveal {
   opacity: 0;
@@ -667,14 +1028,15 @@ button:focus-visible {
 }
 
 /* ------------------------------------------------------------
-   16. RESPONSIVO
+   19. RESPONSIVO
    ------------------------------------------------------------ */
-@media (max-width: 1024px) {
-  .services,
-  .testimonials { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .portfolio { grid-template-columns: repeat(2, 1fr); }
-  .about,
-  .contact { gap: 40px; }
+@media (max-width: 1100px) {
+  .differentials { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
+  .services { grid-template-columns: repeat(2, 1fr); }
+  .process { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .portfolio { grid-template-columns: repeat(3, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 
 @media (max-width: 900px) {
@@ -688,9 +1050,9 @@ button:focus-visible {
     top: var(--header-h);
     left: 0;
     right: 0;
-    background: var(--cor-01);
-    border-top: 1px solid var(--cor-02);
-    border-bottom: 1px solid var(--cor-02);
+    background: var(--cor-creme);
+    border-top: 1px solid var(--borda-sutil);
+    border-bottom: 1px solid var(--borda-sutil);
     padding: 24px;
   }
 
@@ -700,31 +1062,48 @@ button:focus-visible {
     text-align: center;
   }
 
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero__col { padding: 56px 6vw; }
+  .hero__media { min-height: 360px; }
+
   .about,
-  .contact {
+  .contact { grid-template-columns: 1fr; gap: 40px; }
+
+  .process {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
-
-  .services,
-  .testimonials { grid-template-columns: 1fr; gap: 40px; }
-
-  .testimonial { border-left: none; padding-left: 0; text-align: center; }
+  .process::before {
+    top: 0;
+    bottom: 0;
+    left: 26px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+  .process-step { text-align: left; padding-left: 76px; }
+  .process-step__circle { position: absolute; left: 0; top: 0; margin: 0; }
 
   .portfolio { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
-  .footer__inner { flex-direction: column; }
-  .footer__contact { text-align: left; }
+  .testimonial { flex: 0 0 86%; }
+
+  .section__head--split { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 
 @media (max-width: 560px) {
-  body { font-size: 16.5px; }
-  .section { padding: 72px 0; }
+  body { font-size: 17px; }
+  .section { padding: 80px 0; }
+  .differentials { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
   .portfolio { grid-template-columns: 1fr; }
-  .btn { padding: 13px 26px; font-size: 0.78rem; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .btn { padding: 14px 26px; font-size: 0.76rem; }
   .whatsapp-float { width: 54px; height: 54px; right: 16px; bottom: 16px; }
 }
 
 @media (min-width: 1600px) {
   .container { max-width: 1400px; }
-  body { font-size: 19px; }
+  body { font-size: 20px; }
 }
