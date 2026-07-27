@@ -138,17 +138,33 @@
    2. TOKENS — paleta e variáveis globais
    ------------------------------------------------------------ */
 :root {
+  /* Paleta escura (2026-07-27, cores trocadas em 2026-07-27):
+     fundo/base #1f1414, superfícies elevadas (cards, seções
+     alternadas) #6b3320, destaque/CTA #450814 — tema totalmente
+     escuro, sem mais seções claras. */
   --cor-creme: #EFE5D6;
   --cor-creme-claro: #F4ECDF;
-  --cor-cafe: #2A1D18;
-  --cor-cafe-card: #38271F;
-  --cor-cobre: #A96A3F;
-  --cor-cobre-hover: #935A33;
-  --texto-escuro: #2A1D18;
+  --cor-cafe: #1f1414;
+  --cor-cafe-card: #6b3320;
+  /* Sempre um pouco mais claro que --cor-cafe-card (mistura com
+     branco), pra card ficar "elevado" sobre a banda — independe
+     de qual dos dois tons a banda estiver usando no momento. */
+  --cor-cafe-elevado: color-mix(in srgb, var(--cor-cafe-card) 80%, white 20%);
+  --cor-cobre: #450814;
+  /* --cor-cobre puro tem contraste baixo demais sobre #1f1414 pra
+     servir de cor de texto/ícone. --cor-cobre-claro clareia o
+     mesmo tom (mistura com o creme) pra uso em texto/ícone/detalhe,
+     dando ~6:1 de contraste. --cor-cobre puro fica só pra
+     preenchimento (botão, fundo), onde o texto por cima é sempre
+     creme. */
+  --cor-cobre-claro: color-mix(in srgb, var(--cor-cobre) 35%, var(--texto-claro) 65%);
+  --cor-cobre-hover: color-mix(in srgb, var(--cor-cobre) 85%, black 15%);
+  --texto-escuro: #1f1414;
   --texto-claro: #EFE5D6;
-  --texto-suave-escuro: #6B5D52;
+  --texto-suave-escuro: #B8A99C;
   --texto-suave-claro: #C6B9A8;
-  --borda-sutil: rgba(169, 106, 63, 0.35);
+  --borda-sutil: rgba(180, 152, 146, 0.4);
+  --divisor-secao: rgba(235, 219, 207, 0.3);
 
   --whatsapp-green: #25D366;
 
@@ -179,8 +195,8 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--cor-creme);
-  color: var(--texto-escuro);
+  background: var(--cor-cafe);
+  color: var(--texto-claro);
   font-family: var(--font-body);
   font-size: 19px;
   line-height: 1.7;
@@ -192,7 +208,7 @@ img { max-width: 100%; display: block; }
 h1, h2, h3 {
   font-family: var(--font-title);
   font-weight: 400;
-  color: var(--texto-escuro);
+  color: var(--texto-claro);
   line-height: 1.15;
   margin: 0 0 1rem;
 }
@@ -223,11 +239,11 @@ section[id] { scroll-margin-top: var(--header-h); }
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin: 0 0 0.9rem;
 }
 
-.eyebrow--light { color: var(--cor-cobre); }
+.eyebrow--light { color: var(--cor-cobre-claro); }
 
 .section__title {
   font-size: clamp(2rem, 3.6vw, 3rem);
@@ -239,19 +255,54 @@ section[id] { scroll-margin-top: var(--header-h); }
 .hero__title em {
   font-family: var(--font-detail);
   font-style: normal;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
 }
 
 .section { padding: 108px 0; }
 
-.section--divider { border-top: 1px solid var(--borda-sutil); }
+.section--divider { border-top: 1px solid var(--divisor-secao); }
 
 .section--dark {
-  background: var(--cor-cafe);
+  background: var(--cor-cafe-card);
   color: var(--texto-claro);
 }
 
 .section--dark p { color: var(--texto-suave-claro); }
+
+/* Utilitário "seção clara": faixas específicas pedidas pelo cliente
+   (2026-07-27) que quebram o tema escuro com fundo #ebdbcf. Precisa
+   inverter texto/ícone/acento pra tom escuro por cima do fundo claro.
+   Usa .section--dark.section--claro pra vencer o background de
+   .section--dark quando as duas classes coexistem na mesma seção. */
+.section--claro,
+.section--dark.section--claro {
+  background: #ebdbcf;
+  color: var(--texto-escuro);
+}
+
+.section--claro .icon { color: var(--cor-cobre); }
+
+.section--claro h1,
+.section--claro h2,
+.section--claro h3 { color: var(--texto-escuro); }
+
+.section--claro .eyebrow,
+.section--claro .section__title em,
+.section--claro .hero__title em { color: var(--cor-cobre); }
+
+.section--claro .differential p,
+.section--claro .process-step p { color: #6B5D52; }
+
+.section--claro .process-step__number { color: #6B5D52; }
+
+.section--claro .process-step__circle {
+  background: var(--cor-cobre);
+  border-color: var(--cor-cobre);
+}
+
+.section--claro .process-step__circle .icon { color: var(--texto-claro); }
+
+.section--claro .process::before { background: rgba(31, 20, 20, 0.15); }
 
 .section__head { max-width: 640px; margin: 0 auto 56px; text-align: center; }
 
@@ -283,7 +334,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 /* Foco visível */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--cor-cobre);
+  outline: 2px solid var(--cor-cobre-claro);
   outline-offset: 3px;
 }
 
@@ -328,13 +379,13 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   white-space: nowrap;
   transition: gap var(--ease), color var(--ease);
 }
 .link-arrow:hover {
   gap: 12px;
-  color: var(--cor-cobre-hover);
+  color: var(--texto-claro);
 }
 
 /* ------------------------------------------------------------
@@ -343,7 +394,7 @@ button:focus-visible {
 .img-placeholder {
   position: relative;
   overflow: hidden;
-  background: color-mix(in srgb, var(--cor-cobre) 30%, var(--cor-creme));
+  background: color-mix(in srgb, var(--cor-cobre) 30%, var(--cor-cafe-card));
   border-radius: var(--radius-md);
 }
 
@@ -367,14 +418,14 @@ button:focus-visible {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--texto-escuro);
+  color: var(--texto-claro);
 }
 
 /* ------------------------------------------------------------
    6. ÍCONES
    ------------------------------------------------------------ */
 .icon {
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   stroke-width: 1.4;
 }
 
@@ -388,13 +439,13 @@ button:focus-visible {
   right: 0;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(239, 229, 214, 0.9);
+  background: rgba(31, 20, 20, 0.9);
   border-bottom: 1px solid transparent;
   transition: background var(--ease), border-color var(--ease), backdrop-filter var(--ease);
 }
 
 .header.is-scrolled {
-  background: rgba(239, 229, 214, 0.96);
+  background: rgba(31, 20, 20, 0.96);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--borda-sutil);
 }
@@ -426,7 +477,7 @@ button:focus-visible {
 }
 
 .nav__link:hover {
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   border-bottom-color: var(--cor-cobre);
 }
 
@@ -447,7 +498,7 @@ button:focus-visible {
 .hamburger span {
   display: block;
   height: 1px;
-  background: var(--texto-escuro);
+  background: var(--texto-claro);
   transition: transform var(--ease), opacity var(--ease);
 }
 
@@ -553,7 +604,7 @@ button:focus-visible {
 
 .service {
   padding: 32px 28px;
-  background: var(--cor-cafe-card);
+  background: var(--cor-cafe-elevado);
   border-radius: var(--radius-md);
 }
 
@@ -562,7 +613,7 @@ button:focus-visible {
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin: 0 0 0.9rem;
 }
 
@@ -624,7 +675,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--cor-creme);
+  background: var(--cor-cafe-card);
   border: 1px solid var(--borda-sutil);
 }
 
@@ -636,7 +687,7 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--texto-escuro);
+  color: var(--texto-claro);
   margin-bottom: 0.5rem;
 }
 
@@ -711,7 +762,7 @@ button:focus-visible {
   font-family: var(--font-title);
   font-size: clamp(2rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin-bottom: 0.5rem;
 }
 
@@ -745,13 +796,13 @@ button:focus-visible {
   height: 40px;
   border-radius: 50%;
   border: 1px solid var(--borda-sutil);
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   background: transparent;
   transition: background var(--ease), border-color var(--ease);
 }
 
 .testimonials-nav__btn:hover {
-  background: var(--cor-cafe-card);
+  background: var(--cor-cafe-elevado);
   border-color: var(--cor-cobre);
 }
 
@@ -770,7 +821,7 @@ button:focus-visible {
   scroll-snap-align: start;
   margin: 0;
   padding: 40px 32px;
-  background: var(--cor-cafe-card);
+  background: var(--cor-cafe-elevado);
   border-radius: var(--radius-md);
 }
 
@@ -778,7 +829,7 @@ button:focus-visible {
   font-family: var(--font-detail);
   font-size: 3rem;
   line-height: 1;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin-bottom: 0.5rem;
   display: block;
 }
@@ -802,7 +853,7 @@ button:focus-visible {
   display: block;
   margin-top: 0.3rem;
   font-weight: 500;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
 }
 
 /* ------------------------------------------------------------
@@ -836,7 +887,7 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin-bottom: 0.3rem;
 }
 
@@ -851,7 +902,7 @@ button:focus-visible {
    16. FOOTER
    ------------------------------------------------------------ */
 .footer {
-  background: var(--cor-cafe);
+  background: var(--cor-cafe-card);
   color: var(--texto-claro);
   padding: 88px 0 0;
 }
@@ -888,7 +939,7 @@ button:focus-visible {
   height: 38px;
   border-radius: 50%;
   border: 1px solid var(--borda-sutil);
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   transition: background var(--ease), color var(--ease);
 }
 
@@ -903,7 +954,7 @@ button:focus-visible {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cor-cobre);
+  color: var(--cor-cobre-claro);
   margin-bottom: 1.4rem;
 }
 
@@ -919,7 +970,7 @@ button:focus-visible {
   transition: color var(--ease);
 }
 
-.footer__nav-list a:hover { color: var(--cor-cobre); }
+.footer__nav-list a:hover { color: var(--cor-cobre-claro); }
 
 .footer__contact-list {
   display: flex;
@@ -1050,7 +1101,7 @@ button:focus-visible {
     top: var(--header-h);
     left: 0;
     right: 0;
-    background: var(--cor-creme);
+    background: var(--cor-cafe-card);
     border-top: 1px solid var(--borda-sutil);
     border-bottom: 1px solid var(--borda-sutil);
     padding: 24px;
