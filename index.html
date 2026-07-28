@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Arthion Reformas | Reformas de Alto Padrão em Brasília">
 <meta property="og:description" content="Especialistas em reformas de alto padrão. Criando novas formas ao que já existe.">
-<meta property="og:image" content="assets/img/og-image.jpg"> <!-- SUBSTITUIR: imagem 1200x630 -->
+<meta property="og:image" content="assets/img/og-image.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://arthionreformas.com.br/"> <!-- SUBSTITUIR: domínio real -->
 
@@ -66,7 +66,7 @@
 <header class="header" id="header">
   <div class="container header__inner">
     <a href="#inicio" class="header__logo" aria-label="Arthion Reformas — página inicial">
-      <img src="assets/logo/logo-arthion-claro.svg" alt="Arthion Reformas" width="150" height="52">
+      <img src="img/logo quadrada.svg" alt="Arthion Reformas" width="80" height="80">
     </a>
 
     <nav class="nav" id="nav" aria-label="Navegação principal">
@@ -75,7 +75,6 @@
         <li><a href="#sobre" class="nav__link">Sobre</a></li>
         <li><a href="#servicos" class="nav__link">Serviços</a></li>
         <li><a href="#processo" class="nav__link">Processo</a></li>
-        <li><a href="#portfolio" class="nav__link">Portfólio</a></li>
         <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
         <li><a href="#contato" class="nav__link">Contato</a></li>
       </ul>
@@ -109,13 +108,11 @@
           target="_blank"
           rel="noopener"
         >Solicitar orçamento</a>
-        <a href="#portfolio" class="link-arrow">Ver projetos →</a>
       </div>
     </div>
 
-    <div class="hero__media img-placeholder reveal" aria-hidden="true">
-      <img src="assets/img/hero.jpg" alt="" loading="eager" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-      <span class="img-placeholder__label">Imagem — Interior de sala de estar de alto padrão</span>
+    <div class="hero__media reveal">
+      <img src="assets/img/hero.png" alt="Fernando, à frente da Arthion Reformas" loading="eager">
     </div>
   </section>
 
@@ -168,8 +165,7 @@
   <section class="section section--divider" id="sobre">
     <div class="container about">
       <div class="about__media img-placeholder reveal" style="aspect-ratio: 4 / 5;">
-        <img src="assets/img/sobre.jpg" alt="Detalhe de acabamento em reforma de alto padrão assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-        <span class="img-placeholder__label">Imagem — Detalhe de acabamento</span>
+        <img src="assets/img/sobre.jpg" alt="Detalhe de acabamento em reforma de alto padrão assinada pela Arthion Reformas" loading="lazy">
       </div>
 
       <div class="about__text reveal">
@@ -190,35 +186,41 @@
         <h2 class="section__title section__title--light">Nossos <em>servicos</em></h2>
       </div>
 
-      <div class="services">
-        <div class="service reveal">
-          <p class="service__number">01</p>
-          <h3>Consultoria técnica de viabilidade de reforma</h3>
+      <div class="services-grid">
+        <div class="services">
+          <div class="service reveal">
+            <p class="service__number">01</p>
+            <h3>Consultoria técnica de viabilidade de reforma</h3>
+          </div>
+
+          <div class="service reveal">
+            <p class="service__number">02</p>
+            <h3>Planejamento e gestão de obra</h3>
+          </div>
+
+          <div class="service reveal">
+            <p class="service__number">03</p>
+            <h3>Compatibilização de projetos</h3>
+          </div>
+
+          <div class="service reveal">
+            <p class="service__number">04</p>
+            <h3>Execução completa da reforma</h3>
+          </div>
+
+          <div class="service reveal">
+            <p class="service__number">05</p>
+            <h3>Projeto + execução</h3>
+          </div>
+
+          <div class="service reveal">
+            <p class="service__number">06</p>
+            <h3>Execução premium</h3>
+          </div>
         </div>
 
-        <div class="service reveal">
-          <p class="service__number">02</p>
-          <h3>Planejamento e gestão de obra</h3>
-        </div>
-
-        <div class="service reveal">
-          <p class="service__number">03</p>
-          <h3>Compatibilização de projetos</h3>
-        </div>
-
-        <div class="service reveal">
-          <p class="service__number">04</p>
-          <h3>Execução completa da reforma</h3>
-        </div>
-
-        <div class="service reveal">
-          <p class="service__number">05</p>
-          <h3>Projeto + execução</h3>
-        </div>
-
-        <div class="service reveal">
-          <p class="service__number">06</p>
-          <h3>Execução premium</h3>
+        <div class="services__media img-placeholder reveal">
+          <img src="assets/img/logomarca.jpg" alt="Arthion Reformas" loading="lazy">
         </div>
       </div>
     </div>
@@ -295,76 +297,6 @@
           <h3>Entrega</h3>
           <p>Entrega das chaves com o projeto fielmente realizado, do início ao fim.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFÓLIO -->
-  <section class="section section--dark" id="portfolio">
-    <div class="container">
-      <div class="section__head section__head--split reveal">
-        <div>
-          <p class="eyebrow">Portfólio</p>
-          <h2 class="section__title">Projetos que <em>inspiram</em></h2>
-        </div>
-        <a href="#contato" class="link-arrow">Ver todos os projetos →</a>
-      </div>
-
-      <div class="portfolio">
-        <!-- Legendas fictícias — editar livremente -->
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-01.jpg" alt="Residência Lago Sul — reforma completa assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Residência Lago Sul</span>
-          </div>
-          <figcaption>Residência Lago Sul</figcaption>
-        </figure>
-
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-02.jpg" alt="Apartamento Noroeste — design de interiores assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Apartamento Noroeste</span>
-          </div>
-          <figcaption>Apartamento Noroeste</figcaption>
-        </figure>
-
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-03.jpg" alt="Cobertura Sudoeste — projeto arquitetônico assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Cobertura Sudoeste</span>
-          </div>
-          <figcaption>Cobertura Sudoeste</figcaption>
-        </figure>
-
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-04.jpg" alt="Studio Asa Sul — reforma de alto padrão assinada pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Studio Asa Sul</span>
-          </div>
-          <figcaption>Studio Asa Sul</figcaption>
-        </figure>
-
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-05.jpg" alt="Residência Park Way — acompanhamento de obra assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto residencial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Residência Park Way</span>
-          </div>
-          <figcaption>Residência Park Way</figcaption>
-        </figure>
-
-        <figure class="portfolio-item reveal">
-          <div class="img-placeholder" style="aspect-ratio: 4 / 5;">
-            <img src="assets/img/projeto-06.jpg" alt="Escritório Corporativo — projeto de interiores assinado pela Arthion Reformas" loading="lazy" onerror="this.style.display='none'"> <!-- SUBSTITUIR -->
-            <span class="img-placeholder__label">Imagem — Projeto comercial</span>
-            <span class="portfolio-item__overlay" aria-hidden="true">Escritório Corporativo</span>
-          </div>
-          <figcaption>Escritório Corporativo</figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -506,7 +438,7 @@
 
     <div class="footer__col">
       <a href="#inicio" class="footer__logo" aria-label="Arthion Reformas — página inicial">
-        <img src="assets/logo/logo-arthion-claro.svg" alt="Arthion Reformas" width="150" height="52">
+        <img src="img/logo deitada.svg" alt="Arthion Reformas" width="220" height="80">
       </a>
       <p class="footer__desc">"Criando novas formas ao que já existe" — reformas de alto padrão em Brasília, do projeto à entrega das chaves.</p>
 
@@ -549,7 +481,6 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#processo">Processo</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
