@@ -292,6 +292,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 .section--claro .section__title em,
 .section--claro .hero__title em { color: var(--cor-cobre); }
 
+.section--claro .differential h3 { color: var(--texto-escuro); }
+
 .section--claro .differential p,
 .section--claro .process-step p { color: #6B5D52; }
 
