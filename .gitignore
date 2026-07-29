@@ -6,3 +6,12 @@
 fonts/The seasons/
 fonts/cocomat/
 fonts/FontsFree-Net-BeautifullyDelicious.ttf
+fonts/Above-the-Beyond-Font/
+fonts/__MACOSX/
+
+# Idem para a logo: só os .png renomeados/recortados em img/ e
+# assets/logo/ são referenciados pelo site.
+img/\[Arthion\] logo RGB-*.png
+
+# Arquivo solto sem relação com o projeto (não gerado por este trabalho).
+.png_decode_cache.json

@@ -4,19 +4,20 @@
    ============================================================ */
 
 /* ------------------------------------------------------------
-   1. FONTES DA MARCA (The Seasons, Cocomat Pro, Beautifully
-   Delicious Script) — arquivos recebidos e convertidos p/ woff2.
+   1. FONTES DA MARCA (The Seasons, Cocomat Pro, Above the Beyond
+   Script) — arquivos recebidos e convertidos p/ woff2.
 
    AVISOS PENDENTES (ver README, seção 5, para detalhes):
    - Cocomat Pro: os arquivos são versões "trial" cuja licença
      (EULA da Zetafonts) permite só uso pessoal/não comercial —
      não cobre uso em site de empresa. Precisa comprar a licença
      comercial antes de publicar.
-   - The Seasons e Beautifully Delicious Script: os arquivos não
-     têm nenhum glifo acentuado (á, ã, ç, é, ...). Qualquer
-     palavra acentuada quebra visualmente (o caractere cai pro
-     fallback). Publicado assim mesmo por decisão explícita do
-     cliente em 2026-07-22.
+   - The Seasons: os arquivos não têm nenhum glifo acentuado
+     (á, ã, ç, é, ...). Qualquer palavra acentuada quebra
+     visualmente (o caractere cai pro fallback). Publicado assim
+     mesmo por decisão explícita do cliente em 2026-07-22.
+     (Above the Beyond Script, usada em --font-detail, tem os
+     acentos completos — não sofre desse problema.)
    - Cocomat Pro só veio em Light/UltraLight (sem Regular/Bold);
      onde o CSS pede peso 600/700, o navegador vai negritar
      sinteticamente a partir do Light.
@@ -79,8 +80,8 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Beautifully Delicious Script';
-  src: url('../fonts/beautifully-delicious-script/BeautifullyDeliciousScript-Regular.woff2') format('woff2');
+  font-family: 'Above the Beyond Script';
+  src: url('../fonts/above-the-beyond-script/AboveTheBeyond-Script.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -170,14 +171,15 @@
 
   /* Troca pedida pelo cliente em 2026-07-22: The Seasons passa a
      ser a fonte de títulos e de tudo que precisa chamar atenção
-     (H1/H2, números de destaque). Beautifully Delicious Script
-     (a "letra mais desenhada") vira só um acento decorativo em
-     detalhes pontuais (palavra em destaque dentro do título,
-     aspas dos depoimentos) — não é mais usada em textos inteiros. */
+     (H1/H2, números de destaque). A letra "mais desenhada" vira só
+     um acento decorativo em detalhes pontuais (palavra em destaque
+     dentro do título, aspas dos depoimentos) — não é mais usada em
+     textos inteiros. Trocada de Beautifully Delicious Script para
+     Above the Beyond Script em 2026-07-28 (esta tem acentos). */
   --font-title: 'The Seasons', 'Cormorant Garamond', serif;
   --font-subtitle: 'Cocomat Pro', 'Montserrat', sans-serif;
   --font-body: 'The Seasons', 'Cormorant Garamond', serif;
-  --font-detail: 'Beautifully Delicious Script', 'Alex Brush', cursive;
+  --font-detail: 'Above the Beyond Script', 'Alex Brush', cursive;
 
   --container-w: 1240px;
   --header-h: 90px;
@@ -458,7 +460,7 @@ button:focus-visible {
   gap: 24px;
 }
 
-.header__logo img { height: 600px; width: auto; }
+.header__logo img { height: 40px; width: auto; }
 
 .nav__list {
   display: flex;
@@ -932,7 +934,7 @@ button:focus-visible {
 
 .footer__logo { display: block; position: relative; z-index: 2; height: 74px; overflow: visible; margin-bottom: 1.25rem; }
 
-.footer__logo img { height: 600px; width: auto; }
+.footer__logo img { height: 44px; width: auto; }
 
 .footer__desc {
   /* As aspas retas do texto ("Criando novas...") também caem no
