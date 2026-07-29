@@ -256,6 +256,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .section__title em,
 .hero__title em {
   font-family: var(--font-detail);
+  font-size: 0.55em;
   font-style: normal;
   color: var(--cor-cobre-claro);
 }
