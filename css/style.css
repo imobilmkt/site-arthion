@@ -648,6 +648,11 @@ button:focus-visible {
   justify-self: center;
 }
 
+.services__cta {
+  margin-top: 56px;
+  text-align: center;
+}
+
 /* ------------------------------------------------------------
    11. PROCESSO (linha do tempo)
    ------------------------------------------------------------ */
@@ -716,6 +721,11 @@ button:focus-visible {
   font-size: 0.9rem;
   color: var(--texto-suave-escuro);
   margin: 0;
+}
+
+.process__cta {
+  margin-top: 56px;
+  text-align: center;
 }
 
 /* ------------------------------------------------------------
@@ -836,6 +846,11 @@ button:focus-visible {
 }
 
 .testimonials::-webkit-scrollbar { display: none; }
+
+.testimonials__cta {
+  margin-top: 48px;
+  text-align: center;
+}
 
 .testimonial {
   flex: 0 0 calc((100% - 56px) / 3);
