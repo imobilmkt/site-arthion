@@ -104,4 +104,30 @@ O mapa embutido na seção de contato usa o embed do Google Maps apontando diret
 
 ## 7. Domínio
 
-Antes de publicar, atualize as URLs marcadas como placeholder no `<head>` do `index.html` (`og:url` e a URL dentro do JSON-LD do schema.org) para o domínio final do site.
+Antes de publicar, atualize as URLs marcadas como placeholder no `<head>` do `index.html` (`og:url`, `twitter:image`, `canonical` e as URLs dentro dos dois blocos JSON-LD do schema.org) para o domínio final do site, e ajuste `robots.txt`, `sitemap.xml` e `llms.txt` da mesma forma.
+
+## 8. Otimizações para campanha Google Ads (2026-08-20)
+
+Landing page ajustada para campanha paga com foco em conversão via WhatsApp:
+
+- **Bug de rastreamento de conversão corrigido.** O `gtag_report_conversion` antigo usava `event_callback` + `window.location` dentro do callback e `onclick="return ...false"`, o que podia travar o clique esperando resposta do Google e nunca abrir o WhatsApp. Agora o link navega nativamente pelo próprio `href` (não há mais `return` no `onclick`) e o evento dispara em paralelo com `transport_type: 'beacon'`, sem bloquear nada. O ID de conversão (`AW-18241751082/SMw0CIzwotwcEKqQrPpD`) já estava configurado no arquivo — só o padrão de disparo foi corrigido; troque o ID (comentário `SUBSTITUIR` ao lado) se este não for o definitivo.
+- **FAQ adicionada** (`#faq`, entre Depoimentos e Contato) com `<details>/<summary>` nativo (sem JS) e schema `FAQPage` espelhando o mesmo conteúdo — ajude a IA/Google a responder perguntas sobre a Arthion diretamente.
+- **`llms.txt`, `robots.txt` e `sitemap.xml`** criados na raiz para SEO técnico e GEO (Generative Engine Optimization).
+- **Schema.org LocalBusiness reforçado**: tipo mais específico (`HomeAndConstructionBusiness`/`GeneralContractor`), `geo` (lat/long do pino do Google Maps já usado no iframe), `priceRange` e `sameAs` (placeholders de Instagram/Facebook — substitua pelos links reais).
+- **Canonical e Twitter Card** adicionados no `<head>`.
+- **`assets/img/hero.png` renomeado para `assets/img/hero.jpg`** — o arquivo já era um JPEG por dentro, só com extensão errada (o que pode confundir o `Content-Type` servido e otimizações de imagem). Se for gerar um novo `og-image.jpg`, lembre que a proporção ideal é 1200×630 (o arquivo atual está quadrado, reaproveitado da logomarca).
+- **Atributos `width`/`height` e `fetchpriority="high"`** adicionados nas imagens principais (evita layout shift e prioriza o carregamento da imagem do hero, candidata a LCP).
+- **CSS e JS minificados**: `css/style.min.css` e `js/main.min.js` são os arquivos que o `index.html` carrega em produção, gerados a partir de `css/style.css` e `js/main.js` com `npx clean-css-cli` e `npx terser`. **Sempre edite os arquivos-fonte** (`style.css`/`main.js`) e rode os dois comandos abaixo antes de publicar, para os `.min` ficarem em dia:
+  ```
+  npx clean-css-cli -o css/style.min.css css/style.css
+  npx terser js/main.js -o js/main.min.js -c -m
+  ```
+
+### Pendente — aguardando print do Google Meu Negócio
+
+Ainda não recebi o print do Google Meu Negócio da Arthion. Quando chegar, atualizar:
+- Nota e número real de avaliações (adicionar `aggregateRating` no JSON-LD — hoje está de fora de propósito, para não simular dado que não temos).
+- Confirmar se o nome/categoria exibidos no Google Meu Negócio batem com "Arthion Reformas" / "Arthion Arquitetura" usados no site.
+- Depoimentos reais (hoje os três da seção `#depoimentos` estão assinados só como "Cliente Arthion" — texto de exemplo, não depoimento fictício inventado do zero, mas sem nome real).
+- Fotos reais do Google Meu Negócio para substituir os placeholders de `assets/img/` (hero, sobre, serviços).
+- Links reais de Instagram/Facebook (hoje `#` no rodapé e `SUBSTITUIR` no `sameAs` do schema.org).

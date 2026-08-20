@@ -11,22 +11,20 @@
   gtag('config', 'AW-18241751082');
 </script>
 
-<!-- Event snippet for CLIQUE WPP conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<!-- Evento de conversão "Clique WhatsApp".
+Os links de WhatsApp abaixo navegam nativamente pelo próprio href (target="_blank"),
+e o evento de conversão dispara em paralelo via transport_type: 'beacon', sem bloquear
+a navegação nem depender de event_callback — evita o bug em que o clique fica esperando
+resposta do Google e o usuário nunca chega ao WhatsApp. -->
 <script>
 function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
   gtag('event', 'conversion', {
-      'send_to': 'AW-18241751082/SMw0CIzwotwcEKqQrPpD',
+      'send_to': 'AW-18241751082/SMw0CIzwotwcEKqQrPpD', /* SUBSTITUIR se este não for o ID de conversão final do cliente */
       'value': 1.0,
       'currency': 'BRL',
-      'event_callback': callback
+      'transport_type': 'beacon'
   });
-  return false;
+  return true; // nunca usar "return false" nem preventDefault aqui
 }
 </script>
 
@@ -39,9 +37,17 @@ function gtag_report_conversion(url) {
 <meta property="og:type" content="website">
 <meta property="og:title" content="Arthion Reformas | Reformas de Alto Padrão em Brasília">
 <meta property="og:description" content="Especialistas em reformas de alto padrão. Criando novas formas ao que já existe.">
-<meta property="og:image" content="assets/img/og-image.jpg">
+<meta property="og:image" content="https://arthionreformas.com.br/assets/img/og-image.jpg"> <!-- SUBSTITUIR: imagem 1200x630px real (atual está com proporção quadrada) -->
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://arthionreformas.com.br/"> <!-- SUBSTITUIR: domínio real -->
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arthion Reformas | Reformas de Alto Padrão em Brasília">
+<meta name="twitter:description" content="Especialistas em reformas de alto padrão. Criando novas formas ao que já existe.">
+<meta name="twitter:image" content="https://arthionreformas.com.br/assets/img/og-image.jpg"> <!-- SUBSTITUIR: mesma imagem do og:image -->
+
+<link rel="canonical" href="https://arthionreformas.com.br/"> <!-- SUBSTITUIR: domínio real -->
 
 <link rel="icon" href="assets/logo/favicon.png" type="image/png">
 
@@ -57,16 +63,23 @@ function gtag_report_conversion(url) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.min.css">
 
-<!-- Schema.org — LocalBusiness -->
+<!-- Preload da imagem do hero: maior candidata a LCP na primeira dobra -->
+<link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+
+<!-- Schema.org — LocalBusiness
+     aggregateRating/review ficam de fora até termos os números reais do
+     Google Meu Negócio do cliente — nunca simular avaliações aqui. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["HomeAndConstructionBusiness", "GeneralContractor"],
   "name": "Arthion Reformas",
-  "description": "Escritório de arquitetura especializado em reformas de alto padrão em Brasília – DF.",
+  "alternateName": "Arthion Arquitetura",
+  "description": "Escritório de arquitetura especializado em reformas de alto padrão em Brasília – DF. Projeto, planejamento e execução completa de obras residenciais e comerciais.",
   "image": "https://arthionreformas.com.br/assets/img/og-image.jpg",
+  "priceRange": "$$$",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "SRTVN Quadra 701, Bloco P, Sala 2056, Segundo andar",
@@ -75,6 +88,11 @@ function gtag_report_conversion(url) {
     "postalCode": "70719-900",
     "addressCountry": "BR"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -15.78400638485485,
+    "longitude": -47.89091022487014
+  },
   "telephone": "+5561992456202",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -82,8 +100,73 @@ function gtag_report_conversion(url) {
     "opens": "08:30",
     "closes": "18:00"
   },
-  "areaServed": "Brasília – DF",
+  "areaServed": {
+    "@type": "City",
+    "name": "Brasília"
+  },
+  "sameAs": [
+    "https://www.instagram.com/SUBSTITUIR",
+    "https://www.facebook.com/SUBSTITUIR"
+  ],
   "url": "https://arthionreformas.com.br/"
+}
+</script>
+
+<!-- Schema.org — FAQPage (mesmo conteúdo da seção #faq no corpo da página) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "A Arthion faz reforma completa de apartamentos e casas de alto padrão em Brasília?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Arthion atua com projeto arquitetônico, planejamento de obra e execução completa de reformas de alto padrão em residências e imóveis comerciais em Brasília – DF, do primeiro traço à entrega das chaves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Arthion cuida só do projeto ou também executa a obra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As duas coisas. A empresa oferece desde a consultoria técnica de viabilidade e o projeto arquitetônico até a execução completa da reforma, com a opção de contratar projeto e execução em um único serviço."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais bairros e regiões de Brasília a Arthion atende?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Arthion atende clientes em Brasília – DF e região, com sede na Asa Norte (SRTVN Quadra 701, Bloco P, Sala 2056)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona o processo de uma reforma de alto padrão com a Arthion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O processo segue cinco etapas: visita técnica, projeto, planejamento de cronograma e materiais, execução com gestão diária da obra, e entrega das chaves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Arthion faz compatibilização de projetos com outros profissionais, como elétrica, hidráulica e ar-condicionado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, a compatibilização de projetos faz parte dos serviços oferecidos, garantindo que todas as especialidades envolvidas na obra estejam alinhadas antes da execução."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como solicitar um orçamento para reforma de alto padrão com a Arthion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O orçamento é solicitado diretamente pelo WhatsApp da Arthion Reformas, pelos botões disponíveis ao longo do site, com atendimento de segunda a sexta a partir das 08:30."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -105,6 +188,7 @@ function gtag_report_conversion(url) {
         <li><a href="#servicos" class="nav__link">Serviços</a></li>
         <li><a href="#processo" class="nav__link">Processo</a></li>
         <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+        <li><a href="#faq" class="nav__link">FAQ</a></li>
         <li><a href="#contato" class="nav__link">Contato</a></li>
       </ul>
     </nav>
@@ -115,7 +199,7 @@ function gtag_report_conversion(url) {
       target="_blank"
       rel="noopener"
       aria-label="Solicitar orçamento pelo WhatsApp"
-      onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
+      onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
     >Solicitar orçamento</a>
 
     <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
@@ -137,13 +221,13 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
         >Solicitar orçamento</a>
       </div>
     </div>
 
     <div class="hero__media reveal">
-      <img src="assets/img/hero.png" alt="Fernando, à frente da Arthion Reformas" loading="eager">
+      <img src="assets/img/hero.jpg" alt="Fernando, à frente da Arthion Reformas" width="1141" height="1379" loading="eager" fetchpriority="high">
     </div>
   </section>
 
@@ -196,7 +280,7 @@ function gtag_report_conversion(url) {
   <section class="section section--divider" id="sobre">
     <div class="container about">
       <div class="about__media img-placeholder reveal" style="aspect-ratio: 4 / 5;">
-        <img src="assets/img/sobre.jpg" alt="Detalhe de acabamento em reforma de alto padrão assinada pela Arthion Reformas" loading="lazy">
+        <img src="assets/img/sobre.jpg" alt="Detalhe de acabamento em reforma de alto padrão assinada pela Arthion Reformas" width="1905" height="2540" loading="lazy">
       </div>
 
       <div class="about__text reveal">
@@ -211,7 +295,7 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20a%20p%C3%A1gina%20Sobre%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20projetos."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20a%20p%C3%A1gina%20Sobre%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20projetos.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20a%20p%C3%A1gina%20Sobre%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20projetos.');"
         >Falar pelo WhatsApp</a>
       </div>
     </div>
@@ -259,7 +343,7 @@ function gtag_report_conversion(url) {
         </div>
 
         <div class="services__media img-placeholder reveal">
-          <img src="assets/img/logomarca.jpg" alt="Arthion Reformas" loading="lazy">
+          <img src="assets/img/logomarca.jpg" alt="Arthion Reformas" width="1254" height="1256" loading="lazy">
         </div>
       </div>
 
@@ -269,7 +353,7 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20servi%C3%A7os%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20qual%20se%20encaixa%20na%20minha%20reforma."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20servi%C3%A7os%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20qual%20se%20encaixa%20na%20minha%20reforma.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20servi%C3%A7os%20da%20Arthion%20Reformas%20e%20gostaria%20de%20saber%20qual%20se%20encaixa%20na%20minha%20reforma.');"
         >Falar pelo WhatsApp</a>
       </div>
     </div>
@@ -354,7 +438,7 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20como%20funciona%20o%20processo%20da%20Arthion%20Reformas%20e%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20como%20funciona%20o%20processo%20da%20Arthion%20Reformas%20e%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20como%20funciona%20o%20processo%20da%20Arthion%20Reformas%20e%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica.');"
         >Agendar visita técnica pelo WhatsApp</a>
       </div>
     </div>
@@ -444,8 +528,60 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20depoimentos%20de%20clientes%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20depoimentos%20de%20clientes%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vi%20os%20depoimentos%20de%20clientes%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
         >Falar pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERGUNTAS FREQUENTES -->
+  <section class="section section--claro" id="faq">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Dúvidas frequentes</p>
+        <h2 class="section__title">Perguntas <em>frequentes</em></h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">A Arthion faz reforma completa de apartamentos e casas de alto padrão em Brasília?</summary>
+          <p class="faq-item__answer">Sim. A Arthion atua com projeto arquitetônico, planejamento de obra e execução completa de reformas de alto padrão em residências e imóveis comerciais em Brasília – DF, do primeiro traço à entrega das chaves.</p>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">A Arthion cuida só do projeto ou também executa a obra?</summary>
+          <p class="faq-item__answer">As duas coisas. A empresa oferece desde a consultoria técnica de viabilidade e o projeto arquitetônico até a execução completa da reforma, com a opção de contratar projeto e execução em um único serviço.</p>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">Quais bairros e regiões de Brasília a Arthion atende?</summary>
+          <p class="faq-item__answer">A Arthion atende clientes em Brasília – DF e região, com sede na Asa Norte (SRTVN Quadra 701, Bloco P, Sala 2056).</p>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">Como funciona o processo de uma reforma de alto padrão com a Arthion?</summary>
+          <p class="faq-item__answer">O processo segue cinco etapas: visita técnica, projeto, planejamento de cronograma e materiais, execução com gestão diária da obra, e entrega das chaves.</p>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">A Arthion faz compatibilização de projetos com outros profissionais, como elétrica, hidráulica e ar-condicionado?</summary>
+          <p class="faq-item__answer">Sim, a compatibilização de projetos faz parte dos serviços oferecidos, garantindo que todas as especialidades envolvidas na obra estejam alinhadas antes da execução.</p>
+        </details>
+
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">Como solicitar um orçamento para reforma de alto padrão com a Arthion?</summary>
+          <p class="faq-item__answer">O orçamento é solicitado diretamente pelo WhatsApp da Arthion Reformas, pelos botões disponíveis ao longo do site, com atendimento de segunda a sexta a partir das 08:30.</p>
+        </details>
+      </div>
+
+      <div class="faq__cta reveal">
+        <a
+          class="btn btn--primary"
+          href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os%20da%20Arthion%20Reformas."
+          target="_blank"
+          rel="noopener"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os%20da%20Arthion%20Reformas.');"
+        >Tirar dúvida pelo WhatsApp</a>
       </div>
     </div>
   </section>
@@ -481,7 +617,7 @@ function gtag_report_conversion(url) {
           href="https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20Arthion%20Reformas."
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20Arthion%20Reformas.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20Arthion%20Reformas.');"
         >Solicitar orçamento pelo WhatsApp</a>
       </div>
 
@@ -530,7 +666,7 @@ function gtag_report_conversion(url) {
           target="_blank"
           rel="noopener"
           aria-label="WhatsApp da Arthion Reformas"
-          onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
+          onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
         >
           <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor" aria-hidden="true">
             <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.771-1.833A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3Zm0 21.75c-1.94 0-3.75-.53-5.303-1.454l-.38-.226-4.61 1.088 1.117-4.49-.248-.394A9.71 9.71 0 0 1 5.25 15c0-5.936 4.815-10.75 10.751-10.75S26.75 9.064 26.75 15 21.937 24.75 16.001 24.75Zm5.906-8.005c-.322-.161-1.903-.939-2.198-1.046-.295-.107-.51-.161-.724.161-.215.322-.833 1.046-1.021 1.261-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.591-1.598-.958-.854-1.605-1.909-1.793-2.231-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.215-.322.322-.537.107-.215.054-.403-.027-.564-.081-.161-.724-1.746-.992-2.392-.261-.628-.526-.543-.724-.553-.188-.009-.403-.011-.618-.011-.215 0-.564.081-.859.403-.295.322-1.127 1.101-1.127 2.686 0 1.585 1.154 3.116 1.315 3.331.161.215 2.272 3.469 5.505 4.865.769.332 1.369.53 1.837.678.772.245 1.475.211 2.031.128.62-.093 1.903-.778 2.171-1.529.268-.752.268-1.396.188-1.529-.08-.134-.295-.215-.617-.376Z"/>
@@ -553,6 +689,7 @@ function gtag_report_conversion(url) {
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#processo">Processo</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </div>
@@ -597,13 +734,13 @@ function gtag_report_conversion(url) {
   target="_blank"
   rel="noopener"
   aria-label="Falar com a Arthion Reformas pelo WhatsApp"
-  onclick="return gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
+  onclick="gtag_report_conversion('https://wa.me/5561992456202?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Arthion%20Reformas%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.');"
 >
   <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
     <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.688 4.564 1.875 6.417L4 29l7.771-1.833A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3Zm0 21.75c-1.94 0-3.75-.53-5.303-1.454l-.38-.226-4.61 1.088 1.117-4.49-.248-.394A9.71 9.71 0 0 1 5.25 15c0-5.936 4.815-10.75 10.751-10.75S26.75 9.064 26.75 15 21.937 24.75 16.001 24.75Zm5.906-8.005c-.322-.161-1.903-.939-2.198-1.046-.295-.107-.51-.161-.724.161-.215.322-.833 1.046-1.021 1.261-.188.215-.376.242-.698.081-.322-.161-1.36-.501-2.591-1.598-.958-.854-1.605-1.909-1.793-2.231-.188-.322-.02-.496.141-.657.145-.144.322-.376.483-.564.161-.188.215-.322.322-.537.107-.215.054-.403-.027-.564-.081-.161-.724-1.746-.992-2.392-.261-.628-.526-.543-.724-.553-.188-.009-.403-.011-.618-.011-.215 0-.564.081-.859.403-.295.322-1.127 1.101-1.127 2.686 0 1.585 1.154 3.116 1.315 3.331.161.215 2.272 3.469 5.505 4.865.769.332 1.369.53 1.837.678.772.245 1.475.211 2.031.128.62-.093 1.903-.778 2.171-1.529.268-.752.268-1.396.188-1.529-.08-.134-.295-.215-.617-.376Z"/>
   </svg>
 </a>
 
-<script src="js/main.js" defer></script>
+<script src="js/main.min.js" defer></script>
 </body>
 </html>
