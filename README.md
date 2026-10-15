@@ -6,10 +6,12 @@ Site one-page em HTML5 + CSS3 + JavaScript puro (sem frameworks, sem build). Bas
 
 ```
 index.html
+projetos.html       → página do portfólio completo (ver seção 9)
 css/style.css
 js/main.js
 assets/logo/       → logo e favicon
 assets/img/        → fotografias do site
+assets/img/projetos/ → fotos do portfólio, uma subpasta por projeto (ver seção 9)
 fonts/quiche-sans/  → fonte de títulos antiga (comercial, fora de uso — ver seção 5)
 fonts/calluna/      → fonte de texto corrido antiga (comercial, fora de uso — ver seção 5)
 ```
@@ -122,6 +124,16 @@ Landing page ajustada para campanha paga com foco em conversão via WhatsApp:
   npx clean-css-cli -o css/style.min.css css/style.css
   npx terser js/main.js -o js/main.min.js -c -m
   ```
+
+## 9. Portfólio (2026-10-14)
+
+Seção "Portfólio" na home (`#portfolio`, entre Processo e Estatísticas) + página nova `projetos.html` com a galeria completa de cada projeto, uma seção por cliente (`#eilinia`, `#escritorio-cj`, `#fabio-e-bernardo`, `#joana`, `#luciana`, `#natalia-e-isabele`, `#raquel-e-gustavo`, `#regina`).
+
+- **Origem das imagens:** pasta do Google Drive do cliente ("Projetos Marketing"), 8 subpastas (uma por projeto/cliente), ~103 imagens no total. Foram selecionadas as 48 melhores (4 a 8 por projeto, a 1ª de cada lista é a usada como destaque na home), evitando duplicatas e variações de uma mesma composição.
+- **São renders 3D/IA, não fotos da obra concluída.** A maioria trazia uma marca d'água discreta no canto inferior direito (um brilho/estrela, ou o texto "ChatGPT" nas imagens do Escritório CJ). Por decisão do cliente (2026-10-14), o site apresenta essas imagens como resultado final do projeto, sem mencionar que são renders — o texto visível na página não faz essa distinção.
+- **Nomes dos projetos:** usado o primeiro nome do(s) cliente(s) como aparecem nas pastas do Drive (decisão do cliente, 2026-10-14) — avalie no futuro se algum desses nomes precisa ser anonimizado por pedido do cliente.
+- **Processamento das imagens:** cada arquivo foi baixado em resolução original, recortado (mantidos os 86% superiores/esquerdos da imagem, removendo a faixa inferior-direita onde ficava a marca d'água) e redimensionado para no máximo 1600px no maior lado, salvo como `.jpg` qualidade 84 em `assets/img/projetos/<slug>/NN.jpg`.
+- **Galeria da página nova** usa `columns` (CSS multi-coluna, tipo masonry) para manter a proporção original de cada foto, em vez do grid 4:5 cortado usado na prévia da home (classe `.portfolio-item` + `.img-placeholder`, seção 12 do CSS).
 
 ### Pendente — aguardando print do Google Meu Negócio
 
