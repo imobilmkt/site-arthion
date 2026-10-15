@@ -7,6 +7,12 @@ Site one-page em HTML5 + CSS3 + JavaScript puro (sem frameworks, sem build). Bas
 ```
 index.html
 projetos.html       → página do portfólio completo (ver seção 9)
+reforma-de-apartamento.html → landing page de anúncio (ver seção 10)
+reforma-de-casa.html        → landing page de anúncio (ver seção 10)
+empresa-de-reforma.html     → landing page de anúncio (ver seção 10)
+gestao-de-obra.html         → landing page de anúncio (ver seção 10)
+reforma-comercial.html      → landing page de anúncio (ver seção 10)
+projeto-e-execucao.html     → landing page de anúncio (ver seção 10)
 css/style.css
 js/main.js
 assets/logo/       → logo e favicon
@@ -134,6 +140,32 @@ Seção "Portfólio" na home (`#portfolio`, entre Processo e Estatísticas) + p�
 - **Nomes dos projetos:** usado o primeiro nome do(s) cliente(s) como aparecem nas pastas do Drive (decisão do cliente, 2026-10-14) — avalie no futuro se algum desses nomes precisa ser anonimizado por pedido do cliente.
 - **Processamento das imagens:** cada arquivo foi baixado em resolução original, recortado (mantidos os 86% superiores/esquerdos da imagem, removendo a faixa inferior-direita onde ficava a marca d'água) e redimensionado para no máximo 1600px no maior lado, salvo como `.jpg` qualidade 84 em `assets/img/projetos/<slug>/NN.jpg`.
 - **Galeria da página nova** usa `columns` (CSS multi-coluna, tipo masonry) para manter a proporção original de cada foto, em vez do grid 4:5 cortado usado na prévia da home (classe `.portfolio-item` + `.img-placeholder`, seção 12 do CSS).
+- **Seção "Portfólio" movida para logo após o Hero** (2026-10-15), antes da Barra de diferenciais — deixou de ficar entre Processo e Estatísticas.
+- **`assets/img/hero.jpg` substituído** (2026-10-15) pela foto do banheiro do projeto Regina (`assets/img/projetos/regina/06.jpg`), no lugar da foto do Fernando usada antes.
+
+## 10. Landing pages da campanha do Google Ads (2026-10-15)
+
+Seis páginas dedicadas, uma por grupo de anúncios da campanha "Arthion | Pesquisa | Reformas Alto Padrão | Conversão" (export do Google Ads Editor fornecido pelo cliente em 2026-10-15). Antes dessa mudança, todos os grupos de anúncios apontavam para a home genérica (`https://site-arthion.vercel.app/`) — o texto do anúncio prometia algo específico (ex. "Reforma de Casa no Lago Sul") mas a página de destino não tinha relação direta com a busca, o que pesa negativamente no Índice de Qualidade (componente "Experiência da página de destino" e "Relevância do anúncio").
+
+| Grupo de anúncios | Página de destino | Palavras-chave de exemplo |
+|---|---|---|
+| Reforma de Apartamento | `reforma-de-apartamento.html` | reforma de apartamento brasilia, asa norte/sul, noroeste, sudoeste, cobertura |
+| Reforma de Casa | `reforma-de-casa.html` | reforma de casa brasilia, lago sul, lago norte, park way, jardim botânico, ampliação |
+| Empresa de Reforma | `empresa-de-reforma.html` | empresa de reforma brasilia, chave na mão, alto padrão, de luxo, perto de mim |
+| Gestão e Acompanhamento de Obra | `gestao-de-obra.html` | gestão de obra, acompanhamento de obra, fiscalização, gerenciamento, engenheiro |
+| Reforma Comercial | `reforma-comercial.html` | reforma comercial, escritório, clínica, consultório, loja, sala comercial |
+| Projeto e Execução | `projeto-e-execucao.html` | arquiteto para reforma, compatibilização de projetos, projeto e execução |
+
+Cada página reaproveita o cabeçalho, rodapé e as seções de confiança do site (Diferenciais, Processo, Estatísticas, Depoimentos, Contato — idênticas ao `index.html`) e troca só o que precisa bater com a busca:
+
+- **Hero próprio** — título (H1), subtítulo e foto de capa específicos do grupo de anúncios, com o botão do WhatsApp já preenchido com uma mensagem mencionando a página de origem (ajuda a identificar de qual anúncio veio o lead).
+- **Bloco "Serviços específicos"** — lista numerada reaproveitando o layout de `#servicos` da home, mas com os 6 itens cobrindo as variações de palavra-chave do grupo (bairros, tipos de imóvel, etc.) e uma foto quadrada própria.
+- **Galeria de projetos relacionados** — 4 a 6 fotos reais do portfólio (`assets/img/projetos/`) relevantes ao tema da página, no mesmo layout em colunas (masonry) de `projetos.html`, com link para a página de portfólio completa.
+- **FAQ próprio** — 4 perguntas específicas do grupo (preço, bairros atendidos, escopo do serviço) com o schema `FAQPage` correspondente no `<head>`.
+
+Fotos usadas: a maioria vem do portfólio de projetos (`assets/img/projetos/`, ver seção 9) — ex. `gestao-de-obra.html` foge à regra e usa as fotos reais da equipe e do escritório (`img/FOTO EQUIPE.jpg`, `img/FOTO ESCRITORIO.jpg`) em vez de renders, por ser uma página sobre o serviço de gestão (não um ambiente específico).
+
+**Pendente — atualizar o Final URL no Google Ads.** Eu não tenho acesso à conta de Google Ads do cliente, então a troca da URL de destino de cada grupo de anúncios precisa ser feita manualmente (no Google Ads Editor ou na interface web), apontando para o arquivo correspondente da tabela acima no mesmo domínio já usado nos anúncios (`https://site-arthion.vercel.app/<arquivo>.html`, ou o domínio definitivo quando estiver no ar). Essas 6 páginas ainda não foram adicionadas ao menu principal do site (ficam fora do `<nav>` do `index.html`) por serem páginas de aterrissagem de anúncio, não conteúdo de navegação orgânica — mas cada uma tem um bloco "Outros serviços da Arthion" linkando para as outras 5 (logo antes do rodapé) e todas estão no `sitemap.xml`, então nenhuma fica órfã e todas continuam indexáveis.
 
 ### Pendente — aguardando print do Google Meu Negócio
 
