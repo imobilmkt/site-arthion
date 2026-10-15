@@ -112,7 +112,9 @@ O mapa embutido na seção de contato usa o embed do Google Maps apontando diret
 
 ## 7. Domínio
 
-Antes de publicar, atualize as URLs marcadas como placeholder no `<head>` do `index.html` (`og:url`, `twitter:image`, `canonical` e as URLs dentro dos dois blocos JSON-LD do schema.org) para o domínio final do site, e ajuste `robots.txt`, `sitemap.xml` e `llms.txt` da mesma forma.
+Domínio final definido (2026-10-16): `https://arthionreformas.com.br` (sem `www`). Todas as 8 páginas do site (`index.html`, `projetos.html` e as 6 landing pages — ver seção 10) usam esse domínio no `og:url`, `twitter:image`, `canonical` e nos blocos JSON-LD do schema.org, sem mais placeholder `SUBSTITUIR`. `robots.txt`, `sitemap.xml` (lista as 8 páginas) e `llms.txt` (lista as 8 páginas, seção "Páginas") também usam o mesmo domínio.
+
+Se o domínio trocar de novo (ex. passar a usar `www`), repita a busca por `arthionreformas.com.br` nos arquivos acima e ajuste todas as ocorrências de uma vez — propositalmente não há mais nenhum placeholder para facilitar essa busca.
 
 ## 8. Otimizações para campanha Google Ads (2026-08-20)
 
@@ -165,7 +167,7 @@ Cada página reaproveita o cabeçalho, rodapé e as seções de confiança do si
 
 Fotos usadas: a maioria vem do portfólio de projetos (`assets/img/projetos/`, ver seção 9) — ex. `gestao-de-obra.html` foge à regra e usa as fotos reais da equipe e do escritório (`img/FOTO EQUIPE.jpg`, `img/FOTO ESCRITORIO.jpg`) em vez de renders, por ser uma página sobre o serviço de gestão (não um ambiente específico).
 
-**Pendente — atualizar o Final URL no Google Ads.** Eu não tenho acesso à conta de Google Ads do cliente, então a troca da URL de destino de cada grupo de anúncios precisa ser feita manualmente (no Google Ads Editor ou na interface web), apontando para o arquivo correspondente da tabela acima no mesmo domínio já usado nos anúncios (`https://site-arthion.vercel.app/<arquivo>.html`, ou o domínio definitivo quando estiver no ar). Essas 6 páginas ainda não foram adicionadas ao menu principal do site (ficam fora do `<nav>` do `index.html`) por serem páginas de aterrissagem de anúncio, não conteúdo de navegação orgânica — mas cada uma tem um bloco "Outros serviços da Arthion" linkando para as outras 5 (logo antes do rodapé) e todas estão no `sitemap.xml`, então nenhuma fica órfã e todas continuam indexáveis.
+**Pendente — atualizar o Final URL no Google Ads.** Eu não tenho acesso à conta de Google Ads do cliente, então a troca da URL de destino de cada grupo de anúncios precisa ser feita manualmente (no Google Ads Editor ou na interface web), apontando para `https://arthionreformas.com.br/<arquivo>.html` (domínio próprio, ver seção 7) em vez do domínio de staging `site-arthion.vercel.app` usado antes — confirme antes que o domínio já está publicado e servindo este mesmo site. Essas 6 páginas ainda não foram adicionadas ao menu principal do site (ficam fora do `<nav>` do `index.html`) por serem páginas de aterrissagem de anúncio, não conteúdo de navegação orgânica — mas cada uma tem um bloco "Outros serviços da Arthion" linkando para as outras 5 (logo antes do rodapé) e todas estão no `sitemap.xml`, então nenhuma fica órfã e todas continuam indexáveis.
 
 ### Pendente — aguardando print do Google Meu Negócio
 
