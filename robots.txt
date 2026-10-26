@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arthionreformas.com.br/sitemap.xml
+Sitemap: https://www.arthionreformas.com.br/sitemap.xml
