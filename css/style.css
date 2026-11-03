@@ -512,19 +512,44 @@ button:focus-visible {
 .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ------------------------------------------------------------
-   8. HERO (dividido em 2 colunas)
+   8. HERO (foto de fundo em tela cheia com título sobreposto)
    ------------------------------------------------------------ */
 .hero {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
+  position: relative;
+  display: flex;
+  align-items: center;
   min-height: 100vh;
   padding-top: var(--header-h);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(31, 20, 20, .95) 0%, rgba(31, 20, 20, .88) 32%, rgba(31, 20, 20, .55) 58%, rgba(31, 20, 20, .18) 82%);
 }
 
 .hero__col {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 640px;
   padding: 64px 5vw;
 }
 
@@ -535,7 +560,7 @@ button:focus-visible {
 
 .hero__subtitle {
   max-width: 460px;
-  color: var(--texto-suave-escuro);
+  color: var(--texto-suave-claro);
   font-size: 1.15rem;
   margin-bottom: 2.25rem;
 }
@@ -545,17 +570,6 @@ button:focus-visible {
   align-items: center;
   flex-wrap: wrap;
   gap: 32px;
-}
-
-.hero__media {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ------------------------------------------------------------
@@ -1300,9 +1314,8 @@ button:focus-visible {
     text-align: center;
   }
 
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero__col { padding: 56px 6vw; }
-  .hero__media { min-height: 360px; }
+  .hero__col { max-width: none; padding: 56px 6vw; }
+  .hero__overlay { background: linear-gradient(180deg, rgba(31, 20, 20, .55) 0%, rgba(31, 20, 20, .88) 55%, rgba(31, 20, 20, .96) 100%); }
 
   .about,
   .contact { grid-template-columns: 1fr; gap: 40px; }
