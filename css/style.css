@@ -1520,7 +1520,9 @@ button:focus-visible {
     text-align: center;
   }
 
-  .hero__col { max-width: none; padding: 56px 6vw; }
+  .hero { flex-direction: column; align-items: stretch; padding-bottom: 48px; }
+  .hero__col { max-width: none; padding: 56px 6vw 32px; }
+  .hero__aside { display: block; max-width: none; margin: 0 6vw; }
   .hero__overlay { background: linear-gradient(180deg, rgba(31, 20, 20, .55) 0%, rgba(31, 20, 20, .88) 55%, rgba(31, 20, 20, .96) 100%); }
 
   .about,
