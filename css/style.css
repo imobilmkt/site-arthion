@@ -982,7 +982,10 @@ button:focus-visible {
 }
 
 .testimonial__quote {
-  font-style: italic;
+  font-family: var(--font-subtitle);
+  font-style: normal;
+  font-size: 1.02rem;
+  line-height: 1.6;
   color: var(--texto-claro);
 }
 
