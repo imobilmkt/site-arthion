@@ -31,22 +31,56 @@
 
   hamburger.addEventListener('click', toggleMenu);
 
-  /* Carrossel de depoimentos (setas ‹ ›) */
+  /* Carrossel de depoimentos (setas ‹ › + dots) */
   var track = document.getElementById('testimonialsTrack');
   var prevBtn = document.getElementById('testimonialPrev');
   var nextBtn = document.getElementById('testimonialNext');
+  var dotsEl = document.getElementById('testimonialsDots');
 
-  if (track && prevBtn && nextBtn) {
-    function scrollByCard(direction) {
+  if (track) {
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.testimonial'));
+
+    function cardStep() {
       var card = track.querySelector('.testimonial');
-      if (!card) return;
+      if (!card) return 0;
       var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      var amount = (card.getBoundingClientRect().width + gap) * direction;
-      track.scrollBy({ left: amount, behavior: 'smooth' });
+      return card.getBoundingClientRect().width + gap;
     }
 
-    prevBtn.addEventListener('click', function () { scrollByCard(-1); });
-    nextBtn.addEventListener('click', function () { scrollByCard(1); });
+    function scrollByCard(direction) {
+      track.scrollBy({ left: cardStep() * direction, behavior: 'smooth' });
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { scrollByCard(1); });
+
+    if (dotsEl && cards.length > 1) {
+      var dots = cards.map(function (card, index) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'testimonials-dots__btn';
+        dot.setAttribute('aria-label', 'Ir para o depoimento ' + (index + 1));
+        dot.addEventListener('click', function () {
+          track.scrollTo({ left: cardStep() * index, behavior: 'smooth' });
+        });
+        dotsEl.appendChild(dot);
+        return dot;
+      });
+
+      function updateActiveDot() {
+        var step = cardStep();
+        var active = step ? Math.round(track.scrollLeft / step) : 0;
+        dots.forEach(function (dot, index) {
+          dot.classList.toggle('is-active', index === active);
+        });
+      }
+
+      updateActiveDot();
+      track.addEventListener('scroll', function () {
+        window.requestAnimationFrame(updateActiveDot);
+      }, { passive: true });
+      window.addEventListener('resize', updateActiveDot);
+    }
   }
 
   nav.querySelectorAll('.nav__link').forEach(function (link) {
