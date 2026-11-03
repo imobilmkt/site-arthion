@@ -572,6 +572,90 @@ button:focus-visible {
   gap: 32px;
 }
 
+.hero__aside {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: 6vw;
+}
+
+.hero__aside-card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px;
+  border-radius: var(--radius-md);
+  background: rgba(31, 20, 20, 0.55);
+  border: 1px solid rgba(239, 229, 214, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero__aside-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero__aside-rating .testimonial__stars svg { fill: var(--cor-cobre-claro); }
+
+.hero__aside-rating p {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--texto-suave-claro);
+}
+
+.hero__aside-rating strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--texto-claro);
+}
+
+.hero__aside-stats {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(239, 229, 214, 0.18);
+}
+
+.hero__aside-stats strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--cor-cobre-claro);
+}
+
+.hero__aside-stats span {
+  font-family: var(--font-subtitle);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--texto-suave-claro);
+}
+
+.hero__aside-response {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(239, 229, 214, 0.18);
+  font-family: var(--font-subtitle);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--texto-suave-claro);
+}
+
+.hero__aside-response svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--cor-cobre-claro);
+}
+
 /* ------------------------------------------------------------
    9. BARRA DE DIFERENCIAIS
    ------------------------------------------------------------ */
@@ -673,7 +757,7 @@ button:focus-visible {
 .process {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -694,10 +778,12 @@ button:focus-visible {
 }
 
 .process-step__number {
-  /* Cocomat Pro (font-subtitle) tem os 10 algarismos com o mesmo
-     desenho duplicado (fonte trial) — usa The Seasons, que tem
-     os números corretos e distintos entre si. */
-  font-family: var(--font-title);
+  /* Nem Cocomat Pro (font-subtitle, 10 algarismos com o mesmo desenho
+     duplicado) nem The Seasons (font-title) em negrito servem aqui: o
+     "4" e o "+" do The Seasons Bold são glifos quebrados que caem para
+     uma marca d'água "DEMO" da fonte trial. Cormorant Garamond é uma
+     fonte completa (Google Fonts) e evita os dois problemas. */
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1372,8 +1458,9 @@ button:focus-visible {
    19. RESPONSIVO
    ------------------------------------------------------------ */
 @media (max-width: 1100px) {
+  .hero__aside { display: none; }
   .differentials { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
-  .process { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .process { grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
