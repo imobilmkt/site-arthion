@@ -656,6 +656,26 @@ button:focus-visible {
   color: var(--cor-cobre-claro);
 }
 
+.hero__aside-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--whatsapp-green);
+  color: #fff;
+  font-family: var(--font-subtitle);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: filter var(--ease);
+}
+
+.hero__aside-btn:hover { filter: brightness(1.08); }
+
 /* ------------------------------------------------------------
    9. BARRA DE DIFERENCIAIS
    ------------------------------------------------------------ */
