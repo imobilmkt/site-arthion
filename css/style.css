@@ -549,6 +549,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   max-width: 640px;
   padding: 64px 5vw;
 }
@@ -1067,23 +1068,34 @@ button:focus-visible {
 .testimonials-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
   margin-top: 40px;
 }
 
 .testimonials-dots__btn {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.testimonials-dots__btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 9px;
   height: 9px;
-  padding: 0;
   border-radius: 50%;
   border: 1px solid var(--cor-cobre-claro);
-  background: transparent;
+  transform: translate(-50%, -50%);
   transition: background var(--ease), transform var(--ease);
 }
 
-.testimonials-dots__btn:hover { transform: scale(1.2); }
+.testimonials-dots__btn:hover::after { transform: translate(-50%, -50%) scale(1.2); }
 
-.testimonials-dots__btn.is-active {
+.testimonials-dots__btn.is-active::after {
   background: var(--cor-cobre-claro);
 }
 
